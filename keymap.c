@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_PSCR, KC_VOLU, KC_PGUP, KC_TAB,  KC_HOME, KC_END,  XXXXXXX, KC_DEL,
       OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,  KC_VOLD, KC_PGDN, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_BSPC,
       QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_SLCTA,                  KC_RGUI, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,
-                        _______, _______, _______,                     _______, _______, _______
+                        _______, _______, _______,                   _______, _______, _______
     ),
     
     [SYM] = LAYOUT_split_3x5_3_ex2(
@@ -54,9 +54,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     
     [NUM] = LAYOUT_split_3x5_3_ex2(
-      SE_ASTR, SE_ASTR, SE_MINS, SE_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    SE_COMM, KC_DEL,
-      OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,  XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    SE_DOT,  KC_BSPC,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_1,    KC_2,    KC_3,    KC_0,    KC_ENT,
+      SE_SLSH, SE_ASTR, SE_MINS, SE_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, SE_COMM, KC_7,    KC_8,    KC_9,    KC_DEL,
+      OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,  XXXXXXX, XXXXXXX, SE_DOT,  KC_4,    KC_5,    KC_6,    KC_BSPC,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_0,    KC_1,    KC_2,    KC_3,    KC_ENT,
                         _______, _______, _______,                   _______, _______, _______
     ),
     
