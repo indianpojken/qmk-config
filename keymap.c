@@ -29,43 +29,44 @@ enum keycodes {
 #define QK_PASTE LCTL(KC_V)
 #define QK_SLCTA LCTL(KC_A)
 
+#define SE_BSLSH RALT(KC_MINUS)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [DEF] = LAYOUT_split_3x5_3_ex2(
-        KC_Q,          KC_W,             KC_E,             KC_R,            KC_T,             SE_EXLM,         SE_QUES,         KC_Y,             KC_U,            KC_I,            KC_O,              KC_P,
-        KC_A,          KC_S,             KC_D,             KC_F,            KC_G,             SE_COMM,         SE_DOT,          KC_H,             KC_J,            KC_K,            KC_L,              SE_ODIA,
-        KC_Z,          KC_X,             KC_C,             KC_V,            KC_B,                                               KC_N,             KC_M,            SE_ARNG,         SE_ADIA,           KC_SLASH,
-                                         LA_NUM,           LA_NAV,          KC_SPC,                                             KC_LSFT,          LA_SYM,          LA_FUN
+      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    SE_COMM, SE_DOT,  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    SE_EXLM, SE_QUES, KC_H,    KC_J,    KC_K,    KC_L,    SE_ODIA,
+      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    SE_ARNG, SE_ADIA, KC_SLASH,
+                        LA_NUM,  LA_NAV,  KC_SPC,                    KC_LSFT, LA_SYM,  LA_FUN
     ),
-
+    
     [NAV] = LAYOUT_split_3x5_3_ex2(
-        KC_CAPS,       KC_MPRV,          KC_MPLY,          KC_MNXT,         KC_PSCR,          KC_VOLU,         KC_PGUP,         KC_TAB,           KC_HOME,         KC_END,          XXXXXXX,            KC_DEL,
-        OS_GUI,        OS_ALT,           OS_SHFT,          OS_CTRL,         KC_ESC,           KC_VOLD,         KC_PGDN,         KC_LEFT,          KC_DOWN,         KC_UP,           KC_RIGHT,           KC_BSPC,
-        QK_UNDO,       QK_CUT,           QK_COPY,          QK_PASTE,        QK_SLCTA,                                           KC_RGUI,          XXXXXXX,         XXXXXXX,         XXXXXXX,            KC_ENT,
-                                         _______,          _______,         _______,                                            _______,          _______,         _______
+      KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_PSCR, KC_VOLU, KC_PGUP, KC_TAB,  KC_HOME, KC_END,  XXXXXXX, KC_DEL,
+      OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,  KC_VOLD, KC_PGDN, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_BSPC,
+      QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_SLCTA,                  KC_RGUI, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,
+                        _______, _______, _______,                     _______, _______, _______
     ),
-
+    
     [SYM] = LAYOUT_split_3x5_3_ex2(
-        SE_LABK,       SE_LBRC,          SE_LCBR,          SE_LPRN,         SE_QUOT,          SE_DLR,          SE_EURO,         SE_DQUO,          SE_RPRN,         SE_RCBR,         SE_RBRC,           SE_RABK ,
-        SE_MINS,       SE_ASTR,          SE_EQL,           SE_UNDS,         SE_SCLN,          SE_GRV,          SE_ACUT,         SE_COLN,          OS_CTRL,         OS_SHFT,         OS_ALT,            OS_GUI,
-        SE_PLUS,       SE_PIPE,          SE_AT,            SE_AMPR,         SE_SLSH,                                            RALT(KC_MINUS),   SE_PERC,         SE_HASH,         SE_CIRC,           SE_TILD ,
-                                         _______,          _______,         _______,                                            _______,          _______,          _______
+      SE_LABK, SE_LBRC, SE_LCBR, SE_LPRN, SE_QUOT, SE_DLR,  SE_EURO, SE_DQUO, SE_RPRN, SE_RCBR, SE_RBRC, SE_RABK,
+      SE_MINS, SE_ASTR, SE_EQL,  SE_UNDS, SE_SCLN, SE_GRV,  SE_ACUT, SE_COLN, OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
+      SE_PLUS, SE_PIPE, SE_AT,   SE_AMPR, SE_SLSH,                   SE_BSLSH,SE_PERC, SE_HASH, SE_CIRC, SE_TILD,
+                        _______, _______, _______,                   _______, _______, _______
     ),
-
+    
     [NUM] = LAYOUT_split_3x5_3_ex2(
-        SE_ASTR,        SE_ASTR,         SE_MINS,          SE_PLUS,         XXXXXXX,         XXXXXXX,          XXXXXXX,         KC_7,             KC_8,            KC_9,            SE_COMM,           KC_DEL,
-        OS_GUI,         OS_ALT,          OS_SHFT,          OS_CTRL,         KC_ESC,          XXXXXXX,          XXXXXXX,         KC_4,             KC_5,            KC_6,            SE_DOT,            KC_BSPC,
-        XXXXXXX,        XXXXXXX,         XXXXXXX,          XXXXXXX,         XXXXXXX,                                            KC_1,             KC_2,            KC_3,            KC_0,              KC_ENT,
-                                         _______,          _______,         _______,                                            _______,          _______,         _______
+      SE_ASTR, SE_ASTR, SE_MINS, SE_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    SE_COMM, KC_DEL,
+      OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,  XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    SE_DOT,  KC_BSPC,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_1,    KC_2,    KC_3,    KC_0,    KC_ENT,
+                        _______, _______, _______,                   _______, _______, _______
     ),
-
+    
     [FUN] = LAYOUT_split_3x5_3_ex2(
-        KC_F1,          KC_F2,           KC_F3,            KC_F4,           KC_F5,             KC_F6,          KC_F7,           KC_F8,            KC_F9,           KC_F10,          KC_F11,            KC_F12,
-        OS_GUI,         OS_ALT,          OS_SHFT,          OS_CTRL,         KC_ESC,          XXXXXXX,          XXXXXXX,         XXXXXXX,          OS_CTRL,         OS_SHFT,         OS_ALT,            OS_GUI,
-        XXXXXXX,        XXXXXXX,         XXXXXXX,          XXXXXXX,         XXXXXXX,                                            XXXXXXX,          XXXXXXX,         XXXXXXX,         XXXXXXX,           XXXXXXX,
-                                         _______,          _______,         _______,                                            _______,          _______,         _______
+      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+      OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,  XXXXXXX, XXXXXXX, XXXXXXX, OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                        _______, _______, _______,                   _______, _______, _______
     ),
-};
-
+ };
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
