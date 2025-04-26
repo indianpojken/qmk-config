@@ -11,10 +11,10 @@ enum layers {
 };
 
 enum keycodes {
-    OS_GUI = SAFE_RANGE,
-    OS_ALT,
-    OS_SHFT,
-    OS_CTRL,
+  OS_GUI = SAFE_RANGE,
+  OS_ALT,
+  OS_SHFT,
+  OS_CTRL,
 };
 
 #define LA_NAV MO(NAV)
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       [NAV] = LAYOUT_ferris_hlc(
         KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_PSCR,         KC_TAB,  KC_HOME, KC_END,  KC_RGUI, KC_DEL,
         OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,          KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_BSPC,
-        QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_SLCTA,        KC_VOLD, KC_PGDN, KC_PGUP, KC_VOLU, KC_ENT,
+        QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_REP,          KC_VOLD, KC_PGDN, KC_PGUP, KC_VOLU, KC_ENT,
                                    _______, _______,         _______, _______,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
