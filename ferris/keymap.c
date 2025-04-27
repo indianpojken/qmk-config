@@ -56,9 +56,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ),
 
       [NAV] = LAYOUT_ferris_hlc(
-        KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_PSCR,         KC_TAB,  KC_HOME, KC_END,  KC_RGUI, KC_DEL,
+        KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_TAB,          KC_VOLU, KC_HOME, KC_END,  KC_RGUI, KC_DEL,
         OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,          KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_BSPC,
-        QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_REP,          KC_VOLD, KC_PGDN, KC_PGUP, KC_VOLU, KC_ENT,
+        QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_REP,          KC_VOLD, KC_PGDN, KC_PGUP, KC_PSCR, KC_ENT,
                                    _______, _______,         _______, _______,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
       ),
-      
+
       [NUM] = LAYOUT_ferris_hlc(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
         OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_F11,          KC_F12,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,

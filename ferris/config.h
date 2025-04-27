@@ -8,4 +8,3 @@
   #define RGB_MATRIX_TIMEOUT 120000
   #define RGB_MATRIX_SLEEP
 #endif
-
