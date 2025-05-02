@@ -29,14 +29,24 @@ enum keycodes {
 
 #define SE_BSLSH RALT(KC_MINUS)
 
-const uint16_t PROGMEM arng_combo[] = { KC_U, KC_I,    COMBO_END }; // Å
-const uint16_t PROGMEM adia_combo[] = { KC_J, KC_K,    COMBO_END }; // Ä
-const uint16_t PROGMEM odia_combo[] = { KC_M, SE_COMM, COMBO_END }; // Ö
+const uint16_t PROGMEM esc_combo[] =  { KC_W, KC_E,       COMBO_END };
+const uint16_t PROGMEM bspc_combo[] = { KC_I, KC_O,       COMBO_END };
+const uint16_t PROGMEM tab_combo[] =  { KC_X, KC_C,       COMBO_END };
+const uint16_t PROGMEM ent_combo[] =  { SE_COMM, SE_DOT,  COMBO_END };
+
+const uint16_t PROGMEM arng_combo[] = { KC_U, KC_I,       COMBO_END }; // Å
+const uint16_t PROGMEM adia_combo[] = { KC_J, KC_K,       COMBO_END }; // Ä
+const uint16_t PROGMEM odia_combo[] = { KC_M, SE_COMM,    COMBO_END }; // Ö
 
 const uint16_t PROGMEM grv_combo[] =  { SE_PLUS, SE_EQL,  COMBO_END }; // `
 const uint16_t PROGMEM acut_combo[] = { SE_AMPR, SE_PIPE, COMBO_END }; // ´
 
 combo_t key_combos[] = {
+    COMBO(esc_combo,  KC_ESC),
+    COMBO(bspc_combo, KC_BSPC),
+    COMBO(tab_combo,  KC_TAB),
+    COMBO(ent_combo,  KC_ENT),
+  
     COMBO(arng_combo, SE_ARNG), // Å
     COMBO(adia_combo, SE_ADIA), // Ä
     COMBO(odia_combo, SE_ODIA), // Ö
@@ -56,9 +66,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ),
 
       [NAV] = LAYOUT_ferris_hlc(
-        KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_TAB,          KC_VOLU, KC_HOME, KC_END,  KC_RGUI, KC_DEL,
+        KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_TAB,          KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_DEL,
         OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,          KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_BSPC,
-        QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_REP,          KC_VOLD, KC_PGDN, KC_PGUP, KC_PSCR, KC_ENT,
+        QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_REP,          QK_REP,  KC_VOLD, KC_VOLU, KC_PSCR, KC_ENT,
                                    _______, _______,         _______, _______,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
