@@ -23,9 +23,8 @@ enum keycodes {
 
 #define QK_UNDO  LCTL(KC_Z)
 #define QK_CUT   LCTL(KC_X)
-#define QK_COPY  LCTL(KC_X)
+#define QK_COPY  LCTL(KC_C)
 #define QK_PASTE LCTL(KC_V)
-#define QK_SLCTA LCTL(KC_A)
 
 #define SE_BSLSH RALT(KC_MINUS)
 
@@ -43,7 +42,7 @@ const uint16_t PROGMEM acut_combo[] = { SE_AMPR, SE_PIPE, COMBO_END }; // ´
 
 combo_t key_combos[] = {
     COMBO(esc_combo,  KC_ESC),
-    COMBO(bspc_combo, KC_BSPC),
+    COMBO(bspc_combo, KC_BSPC), 
     COMBO(tab_combo,  KC_TAB),
     COMBO(ent_combo,  KC_ENT),
   
