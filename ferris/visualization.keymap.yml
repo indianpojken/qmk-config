@@ -1,9 +1,7 @@
 layout: { qmk_keyboard: ferris/sweep, layout_name: LAYOUT_split_3x5_2 }
 combos:
-  - { p: [1, 2], k: ⎋, l: [DEF] }
-  - { p: [7, 8], k: ⌫, l: [DEF] }
-  - { p: [21, 22], k: ⇥, l: [DEF] }
-  - { p: [27, 28], k: ⏎, l: [DEF] }
+  - { p: [0, 1], k: ⌫, l: [DEF] }
+  - { p: [20, 21], k: ⏎, l: [DEF] }
 
   - { p: [6, 7], k: Å, l: [DEF] }
   - { p: [16, 17], k: Ä, l: [DEF] }
