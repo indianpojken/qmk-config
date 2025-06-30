@@ -78,7 +78,7 @@ layers:
     - 🕪
     - ⎙
     - ⏎
-    - { t: ▽, type: trans }
+    - { t: ▽, type: held }
     - { t: ▽, type: trans }
     - { t: ▽, type: trans }
     - { t: ▽, type: trans }
@@ -97,8 +97,8 @@ layers:
     - "["
     - "{"
     - "("
-    - "'"
     - '"'
+    - "'"
     - ⌃
     - ⇧
     - ⎇
@@ -116,7 +116,7 @@ layers:
     - { t: ▽, type: trans }
     - { t: ▽, type: trans }
     - { t: ▽, type: trans }
-    - { t: ▽, type: trans }
+    - { t: ▽, type: held }
   NUM:
     - 1
     - 2
@@ -148,7 +148,7 @@ layers:
     - F8
     - F9
     - F10
+    - { t: ▽, type: held }
     - { t: ▽, type: trans }
     - { t: ▽, type: trans }
-    - { t: ▽, type: trans }
-    - { t: ▽, type: trans }
+    - { t: ▽, type: held }
