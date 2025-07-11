@@ -53,8 +53,8 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       [DEF] = LAYOUT_ferris_hlc(
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,            KC_H,    KC_J,    KC_K,    KC_L,    SE_QUES,
-        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_N,    KC_M,    SE_COMM, SE_DOT,  SE_EXLM,
+        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,            KC_H,    KC_J,    KC_K,    KC_L,    SE_QUOT,
+        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_N,    KC_M,    SE_COMM, SE_DOT,  SE_DQUO,
                                    LA_NAV,  KC_SPC,          KC_LSFT, LA_SYM,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -70,13 +70,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ),
   
       [SYM] = LAYOUT_ferris_hlc(
-        SE_SLSH, SE_ASTR, SE_MINS, SE_PLUS, SE_EQL,          SE_PIPE, SE_AMPR, SE_UNDS, SE_PERC, SE_BSLSH,
-        SE_LABK, SE_LBRC, SE_LCBR, SE_LPRN, SE_DQUO,         SE_QUOT, OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-        SE_RABK, SE_RBRC, SE_RCBR, SE_RPRN, SE_DLR,          SE_EURO, SE_AT,   SE_HASH, SE_CIRC, SE_TILD,
+        SE_SLSH, SE_ASTR, SE_MINS, SE_PLUS, SE_EQL,          SE_PERC, SE_AMPR, SE_UNDS, SE_PIPE, SE_BSLSH,
+        SE_LABK, SE_LBRC, SE_LCBR, SE_LPRN, SE_EXLM,         SE_DLR,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
+        SE_RABK, SE_RBRC, SE_RCBR, SE_RPRN, SE_QUES,         SE_EURO, SE_AT,   SE_HASH, SE_CIRC, SE_TILD,
                                    _______, _______,         _______, _______,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-      ),
+    ),
 
       [NUM] = LAYOUT_ferris_hlc(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
