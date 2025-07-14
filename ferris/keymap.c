@@ -1,6 +1,10 @@
 #include QMK_KEYBOARD_H
 
 #include "keymap_swedish.h"
+#include "sendstring_swedish.h"
+
+#include "g/keymap_combo.h"
+
 #include "oneshot.h"
 
 enum layers {
@@ -28,33 +32,19 @@ enum keycodes {
 
 #define SE_BSLSH RALT(KC_MINUS)
 
-const uint16_t PROGMEM bspc_combo[] = { KC_Q, KC_W,       COMBO_END };
-const uint16_t PROGMEM ent_combo[]  = { KC_Z, KC_X,       COMBO_END };
+const key_override_t ques_exlm_override = ko_make_basic(MOD_MASK_SHIFT, SE_QUES, SE_EXLM); // S-? -> ?
+const key_override_t quot_dquo_override = ko_make_basic(MOD_MASK_SHIFT, SE_QUOT, SE_DQUO); // S-' -> "
 
-const uint16_t PROGMEM arng_combo[] = { KC_U, KC_I,       COMBO_END }; // Å
-const uint16_t PROGMEM adia_combo[] = { KC_J, KC_K,       COMBO_END }; // Ä
-const uint16_t PROGMEM odia_combo[] = { KC_M, SE_COMM,    COMBO_END }; // Ö
-
-const uint16_t PROGMEM grv_combo[]  = { SE_PLUS, SE_EQL,  COMBO_END }; // `
-const uint16_t PROGMEM acut_combo[] = { SE_AMPR, SE_PIPE, COMBO_END }; // ´
-
-combo_t key_combos[] = {
-    COMBO(bspc_combo, KC_BSPC), 
-    COMBO(ent_combo,  KC_ENT),
-  
-    COMBO(arng_combo, SE_ARNG), // Å
-    COMBO(adia_combo, SE_ADIA), // Ä
-    COMBO(odia_combo, SE_ODIA), // Ö
-
-    COMBO(grv_combo,  SE_GRV),  // `
-    COMBO(acut_combo, SE_ACUT)  // ´
+const key_override_t *key_overrides[] = {
+	&ques_exlm_override,
+  &quot_dquo_override 
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       [DEF] = LAYOUT_ferris_hlc(
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,            KC_H,    KC_J,    KC_K,    KC_L,    SE_QUOT,
-        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_N,    KC_M,    SE_COMM, SE_DOT,  SE_DQUO,
+        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_N,    KC_M,    SE_COMM, SE_DOT,  SE_QUES,
                                    LA_NAV,  KC_SPC,          KC_LSFT, LA_SYM,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -70,13 +60,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ),
   
       [SYM] = LAYOUT_ferris_hlc(
-        SE_SLSH, SE_ASTR, SE_MINS, SE_PLUS, SE_EQL,          SE_PERC, SE_AMPR, SE_UNDS, SE_PIPE, SE_BSLSH,
-        SE_LABK, SE_LBRC, SE_LCBR, SE_LPRN, SE_QUES,         SE_DLR,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-        SE_RABK, SE_RBRC, SE_RCBR, SE_RPRN, SE_EXLM,         SE_EURO, SE_AT,   SE_HASH, SE_CIRC, SE_TILD,
+        SE_SLSH, SE_ASTR, SE_COLN, SE_MINS, SE_PLUS,         SE_PERC, SE_AMPR, SE_UNDS, SE_PIPE, SE_BSLSH,
+        SE_LABK, SE_LBRC, SE_EQL,  SE_LPRN, SE_LCBR,         SE_DLR,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
+        SE_RABK, SE_RBRC, SE_SCLN, SE_RPRN, SE_RCBR,         SE_EURO, SE_AT,   SE_HASH, SE_CIRC, SE_TILD,
                                    _______, _______,         _______, _______,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-    ),
+      ),
 
       [NUM] = LAYOUT_ferris_hlc(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
