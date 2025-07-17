@@ -5,10 +5,10 @@ COMB(arng_combo, SE_ARNG, KC_U, KC_I) // Å
 COMB(adia_combo, SE_ADIA, KC_J, KC_K) // Ä
 COMB(odia_combo, SE_ODIA, KC_M, SE_COMM) // Ö
 
-COMB(grv_combo,  SE_GRV, SE_PLUS, SE_EQL)  // `
-COMB(acut_combo, SE_ACUT, SE_AMPR, SE_PIPE)  // ´
+COMB(grv_combo,  SE_GRV, SE_AMPR, SE_PERC)  // `
+COMB(acut_combo, SE_ACUT, SE_PLUS, SE_MINS)  // ´
 
-SUBS(arrw_combo, "=>", SE_EQL, SE_LPRN)
-SUBS(lteq_combo, "<=", SE_COLN, SE_MINS)
-SUBS(gteq_combo, ">=", SE_AMPR, SE_UNDS)
-SUBS(nteq_combo, "!=", SE_LBRC, SE_EQL)
+SUBS(arrw_combo, "=>", SE_LCBR, SE_LPRN)
+SUBS(lteq_combo, "<=", SE_UNDS, SE_AMPR)
+SUBS(gteq_combo, ">=", SE_MINS, SE_EQL)
+SUBS(nteq_combo, "!=", SE_PIPE, SE_UNDS)

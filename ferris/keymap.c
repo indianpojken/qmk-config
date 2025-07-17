@@ -29,8 +29,7 @@ enum keycodes {
 #define QK_CUT   LCTL(KC_X)
 #define QK_COPY  LCTL(KC_C)
 #define QK_PASTE LCTL(KC_V)
-
-#define SE_BSLSH RALT(KC_MINUS)
+#define QK_BSPC  LCTL(KC_BSPC)
 
 const key_override_t ques_exlm_override = ko_make_basic(MOD_MASK_SHIFT, SE_QUES, SE_EXLM); // S-? -> ?
 const key_override_t quot_dquo_override = ko_make_basic(MOD_MASK_SHIFT, SE_QUOT, SE_DQUO); // S-' -> "
@@ -45,24 +44,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,            KC_H,    KC_J,    KC_K,    KC_L,    SE_QUOT,
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_N,    KC_M,    SE_COMM, SE_DOT,  SE_QUES,
-                                   LA_NAV,  KC_SPC,          KC_LSFT, LA_SYM,
+                                   LA_NAV,  KC_LSFT,         KC_SPC,  LA_SYM,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
       ),
-
+      
       [NAV] = LAYOUT_ferris_hlc(
-        KC_CAPS, KC_MPRV, KC_MPLY, KC_MNXT, KC_TAB,          KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_DEL,
-        OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_ESC,          KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_BSPC,
-        QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_REP,          QK_REP,  KC_VOLD, KC_VOLU, KC_PSCR, KC_ENT,
-                                   _______, _______,         _______, _______,
+        KC_VOLD, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU,         KC_PGDN, KC_HOME, KC_END,  KC_PGUP, KC_CAPS,
+        OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_TAB,          KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_ESC,
+        QK_UNDO, QK_CUT,  QK_COPY, QK_PASTE,QK_REP,          QK_BSPC, KC_BSPC, KC_DEL,  KC_PSCR, KC_APP,
+                                   _______, _______,         KC_ENT,  _______,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
       ),
-  
+
       [SYM] = LAYOUT_ferris_hlc(
-        SE_SLSH, SE_ASTR, SE_COLN, SE_MINS, SE_PLUS,         SE_PERC, SE_AMPR, SE_UNDS, SE_PIPE, SE_BSLSH,
-        SE_LABK, SE_LBRC, SE_EQL,  SE_LPRN, SE_LCBR,         SE_DLR,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-        SE_RABK, SE_RBRC, SE_SCLN, SE_RPRN, SE_RCBR,         SE_EURO, SE_AT,   SE_HASH, SE_CIRC, SE_TILD,
+        SE_BSLS, SE_PIPE, SE_UNDS, SE_AMPR, SE_PERC,         SE_PLUS, SE_MINS, SE_EQL,  SE_ASTR, SE_SLSH,
+        SE_LABK, SE_COLN, SE_LCBR, SE_LPRN, SE_LBRC,         SE_DLR,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
+        SE_RABK, SE_SCLN, SE_RCBR, SE_RPRN, SE_RBRC,         SE_EURO, SE_AT,   SE_HASH, SE_CIRC, SE_TILD,
                                    _______, _______,         _______, _______,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
