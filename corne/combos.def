@@ -1,0 +1,14 @@
+COMB(bspc_combo, KC_BSPC, KC_Q, KC_W) 
+COMB(ent_combo,  KC_ENT, KC_Z, KC_X)
+
+COMB(arng_combo, SE_ARNG, KC_U, KC_I) // Å
+COMB(adia_combo, SE_ADIA, KC_J, KC_K) // Ä
+COMB(odia_combo, SE_ODIA, KC_M, SE_COMM) // Ö
+
+COMB(grv_combo,  SE_GRV, SE_AMPR, SE_PERC)  // `
+COMB(acut_combo, SE_ACUT, SE_PLUS, SE_MINS)  // ´
+
+SUBS(arrw_combo, "=>", SE_LCBR, SE_LPRN)
+SUBS(lteq_combo, "<=", SE_UNDS, SE_AMPR)
+SUBS(gteq_combo, ">=", SE_MINS, SE_EQL)
+SUBS(nteq_combo, "!=", SE_PIPE, SE_UNDS)
