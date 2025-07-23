@@ -1,5 +1,5 @@
-COMB(bspc_combo, KC_BSPC, KC_Q, KC_W) 
-COMB(ent_combo,  KC_ENT, KC_Z, KC_X)
+COMB(esc_combo,  KC_ESC,  KC_Q, KC_W) 
+COMB(ent_combo,  KC_ENT,  KC_Z, KC_X)
 
 COMB(arng_combo, SE_ARNG, KC_U, KC_I) // Å
 COMB(adia_combo, SE_ADIA, KC_J, KC_K) // Ä

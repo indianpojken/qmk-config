@@ -16,8 +16,8 @@ draw_config:
     rect:has(~ a[href="#SYM"]) { stroke: #a6e3a1; }
     a { visibility: hidden; }
 combos:
-  - { p: [0, 1], k: ⌫, l: [DEF] }
-  - { p: [20, 21], k: ⏎, l: [DEF] }
+  - { p: [0, 1], k: $$mdi:keyboard-esc$$, l: [DEF] }
+  - { p: [20, 21], k: $$mdi:keyboard-return$$, l: [DEF] }
 
   - { p: [6, 7], k: Å, l: [DEF] }
   - { p: [16, 17], k: Ä, l: [DEF] }
