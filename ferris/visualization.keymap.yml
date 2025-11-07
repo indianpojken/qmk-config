@@ -27,7 +27,8 @@ combos:
   - { p: [2, 3], k: "<=", l: [SYM] }
   - { p: [3, 4], k: "`", l: [SYM] }
   - { p: [5, 6], k: ´, l: [SYM] }
-  - { p: [12, 13], k: "=>", l: [SYM] }
+  - { p: [11, 12], k: "=>", l: [SYM] }
+  - { p: [12, 13], k: ".{", l: [SYM] }
   - { p: [6, 7], k: ">=", l: [SYM] }
 layers:
   DEF:
@@ -73,10 +74,10 @@ layers:
     - $$mdi:play-pause$$
     - $$mdi:skip-forward$$
     - $$mdi:volume-plus$$
-    - $$mdi:arrow-collapse-down$$
     - $$mdi:arrow-collapse-left$$
-    - $$mdi:arrow-collapse-right$$
+    - $$mdi:arrow-collapse-down$$
     - $$mdi:arrow-collapse-up$$
+    - $$mdi:arrow-collapse-right$$
     - $$mdi:caps-lock$$
     - { t: $$mdi:apple-keyboard-command$$, type: mod }
     - { t: $$mdi:apple-keyboard-option$$, type: mod }
@@ -103,36 +104,36 @@ layers:
     - $$mdi:keyboard-return$$
     - SYM
   SYM:
-    - '\'
-    - "|"
-    - "_"
-    - "&"
-    - "%"
-    - "+"
-    - "-"
-    - "="
-    - "*"
-    - "/"
-    - "<"
-    - ":"
+    - "^"
+    - "["
     - "{"
     - "("
-    - "["
-    - "$"
+    - "<"
+    - ">"
+    - ")"
+    - "}"
+    - "]"
+    - "~"
+    - "-"
+    - "*"
+    - "="
+    - "_"
+    - "@"
+    - "#"
     - { t: $$mdi:apple-keyboard-control$$, type: mod }
     - { t: $$mdi:apple-keyboard-shift$$, type: mod }
     - { t: $$mdi:apple-keyboard-option$$, type: mod }
     - { t: $$mdi:apple-keyboard-command$$, type: mod }
-    - ">"
+    - "+"
+    - "/"
+    - ":"
     - ";"
-    - "}"
-    - ")"
-    - "]"
+    - "%"
     - "€"
-    - "@"
-    - "#"
-    - "^"
-    - "~"
+    - "&"
+    - "|"
+    - "\\"
+    - "$"
     - NAV
     - { t: ▽, type: trans }
     - { t: ▽, type: trans }

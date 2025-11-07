@@ -8,7 +8,9 @@ COMB(odia_combo, SE_ODIA, KC_M, SE_COMM) // Ö
 COMB(grv_combo,  SE_GRV, SE_AMPR, SE_PERC)  // `
 COMB(acut_combo, SE_ACUT, SE_PLUS, SE_MINS)  // ´
 
-SUBS(arrw_combo, "=>", SE_LCBR, SE_LPRN)
-SUBS(lteq_combo, "<=", SE_UNDS, SE_AMPR)
-SUBS(gteq_combo, ">=", SE_MINS, SE_EQL)
-SUBS(nteq_combo, "!=", SE_PIPE, SE_UNDS)
+SUBS(nteq_combo, "!=", SE_LBRC, SE_LCBR)
+SUBS(lteq_combo, "<=", SE_LCBR, SE_LPRN)
+SUBS(strc_combo, ".{", SE_EQL,  SE_UNDS)
+SUBS(arrw_combo, "=>", SE_ASTR, SE_EQL)
+SUBS(gteq_combo, ">=", SE_RPRN, SE_RCBR)
+ 

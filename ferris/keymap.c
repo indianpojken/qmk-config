@@ -59,9 +59,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ),
 
       [SYM] = LAYOUT_ferris_hlc(
-        SE_BSLS, SE_PIPE, SE_UNDS, SE_AMPR, SE_PERC,         SE_PLUS, SE_MINS, SE_EQL,  SE_ASTR, SE_SLSH,
-        SE_LABK, SE_COLN, SE_LCBR, SE_LPRN, SE_LBRC,         SE_DLR,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-        SE_RABK, SE_SCLN, SE_RCBR, SE_RPRN, SE_RBRC,         SE_EURO, SE_AT,   SE_HASH, SE_CIRC, SE_TILD,
+        SE_CIRC, SE_LBRC, SE_LCBR, SE_LPRN, SE_LABK,         SE_RABK, SE_RPRN, SE_RCBR, SE_RBRC, SE_TILD,
+        SE_MINS, SE_ASTR, SE_EQL,  SE_UNDS, SE_AT,           SE_HASH, OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
+        SE_PLUS, SE_SLSH, SE_COLN, SE_SCLN, SE_PERC,         SE_EURO, SE_AMPR, SE_PIPE, SE_BSLS, SE_DLR,
                                    _______, _______,         _______, _______,
 
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
