@@ -1,3 +1,3 @@
-![keymap](./visualization.png)
+![keymap](./assets/visualization.png)
 
 > Keymap drawer CSS by bravekarma

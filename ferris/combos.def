@@ -1,5 +1,5 @@
-COMB(esc_combo,  KC_ESC,  KC_Q, KC_W) 
-COMB(ent_combo,  KC_ENT,  KC_Z, KC_X)
+COMB(esc_combo,   KC_ESC,  KC_Q, KC_W)
+COMB(enter_combo, KC_ENT,  KC_Z, KC_X)
 
 COMB(arng_combo, SE_ARNG, KC_U, KC_I) // Å
 COMB(adia_combo, SE_ADIA, KC_J, KC_K) // Ä
@@ -10,7 +10,6 @@ COMB(acut_combo, SE_ACUT, SE_PLUS, SE_MINS)  // ´
 
 SUBS(nteq_combo, "!=", SE_LBRC, SE_LCBR)
 SUBS(lteq_combo, "<=", SE_LCBR, SE_LPRN)
-SUBS(strc_combo, ".{", SE_EQL,  SE_UNDS)
-SUBS(arrw_combo, "=>", SE_ASTR, SE_EQL)
+SUBS(struct_combo, ".{", SE_EQL,  SE_UNDS)
+SUBS(arrow_combo, "=>", SE_ASTR, SE_EQL)
 SUBS(gteq_combo, ">=", SE_RPRN, SE_RCBR)
- 
