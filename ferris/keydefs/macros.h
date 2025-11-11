@@ -14,8 +14,8 @@
 #define MC_TABL C(S(KC_TAB)) // Tab-left
 #define MC_TABR C(KC_TAB) // Tab-right
 
-#define MC_ZINC C(SE_MINS) // Zoom in
-#define MC_ZDEC C(SE_PLUS) // Zoom out
+#define MC_ZINC C(SE_PLUS) // Zoom in
+#define MC_ZDEC C(SE_MINS) // Zoom out
 #define MC_ZRST C(KC_0) // Restore zoom
 
 #define MC_QUIT A(KC_F4)

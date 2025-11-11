@@ -10,6 +10,6 @@ COMB(acut_combo, SE_ACUT, SE_PLUS, SE_MINS)  // ´
 
 SUBS(nteq_combo, "!=", SE_LBRC, SE_LCBR)
 SUBS(lteq_combo, "<=", SE_LCBR, SE_LPRN)
-SUBS(struct_combo, ".{", SE_EQL,  SE_UNDS)
-SUBS(arrow_combo, "=>", SE_ASTR, SE_EQL)
+SUBS(arrow_combo, "=>", SE_ASTR, SE_UNDS)
+SUBS(struct_combo, ".{", SE_UNDS, SE_EQL)
 SUBS(gteq_combo, ">=", SE_RPRN, SE_RCBR)
