@@ -2,7 +2,7 @@ COMBO_ENABLE = yes
 VPATH += keyboards/gboards
 
 SRC += features/oneshot.c
-SRC += features/swapper.c
+SRC += features/tabber.c
 
 ENCODER_ENABLE = no
 ENCODER_MAP_ENABLE = no

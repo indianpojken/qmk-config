@@ -9,7 +9,7 @@
 #include "keydefs/overrides.h"
 
 #include "features/oneshot.h"
-#include "features/swapper.h"
+#include "features/tabber.h"
 
 enum layers {
     DEF,
@@ -24,7 +24,10 @@ enum keycodes {
   OS_ALT,
   OS_SHFT,
   OS_CTRL,
-  SW_TAB,
+
+  TB_REP,
+  TB_PREV,
+  TB_NEXT,
 };
 
 #define LA_NAV MO(NAV)
@@ -43,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV] = LAYOUT_ferris_hlc(
-    LA_EXT,  MC_TABL, SW_TAB,  MC_TABR, MC_LCHR,         KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_CAPS,
+    LA_EXT,  TB_PREV, TB_REP,  TB_NEXT, MC_LCHR,         KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_CAPS,
     OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_TAB,          KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_ESC,
     MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,QK_REP,          QK_REP,  KC_BSPC, MC_WBSPC,KC_DEL,  KC_APP,
                               _______, _______,          KC_ENT,  _______,
@@ -111,7 +114,33 @@ oneshot_state os_alt_state = os_up_unqueued;
 oneshot_state os_shft_state = os_up_unqueued;
 oneshot_state os_ctrl_state = os_up_unqueued;
 
-bool sw_tab_active = false;
+tabber_t tabber = {
+  .enabled = false,
+  .previous = KC_NO,
+
+  .modifier = KC_LALT,
+};
+
+tabber_action_t tabber_prev = {
+    .normal = C(S(KC_TAB)),
+    .active = A(S(KC_TAB)),
+};
+
+tabber_action_t tabber_next = {
+    .normal = C(KC_TAB),
+    .active = A(KC_TAB),
+};
+
+bool is_tabber_ignored_key(uint16_t keycode) {
+  switch (keycode) {
+  case TB_REP:
+  case TB_PREV:
+  case TB_NEXT:
+    return true;
+  default:
+    return false;
+  }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   update_oneshot(
@@ -134,8 +163,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     keycode, record
   );
 
-  update_swapper(
-    &sw_tab_active, KC_LALT, KC_TAB, SW_TAB,
+  update_tabber(
+    &tabber, TB_REP,
+    keycode, record
+  );
+
+  update_tabber_action(
+    &tabber, &tabber_prev, TB_PREV,
+    keycode, record
+  );
+
+  update_tabber_action(
+    &tabber, &tabber_next, TB_NEXT,
     keycode, record
   );
 
