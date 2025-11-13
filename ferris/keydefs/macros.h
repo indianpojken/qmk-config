@@ -11,9 +11,6 @@
 #define MC_TMGR C(S(KC_ESC)) // Task manager
 #define MC_TGLF KC_F11 // Toggle full/maximized
 
-#define MC_TABL C(S(KC_TAB)) // Tab-left
-#define MC_TABR C(KC_TAB) // Tab-right
-
 #define MC_ZINC C(SE_PLUS) // Zoom in
 #define MC_ZDEC C(SE_MINS) // Zoom out
 #define MC_ZRST C(KC_0) // Restore zoom
