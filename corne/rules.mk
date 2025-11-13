@@ -1,7 +1,8 @@
 COMBO_ENABLE = yes
-
-SRC += oneshot.c
 VPATH += keyboards/gboards
+
+SRC += features/oneshot.c
+SRC += features/tabber.c
 
 RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = no
