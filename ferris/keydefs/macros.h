@@ -10,6 +10,7 @@
 #define MC_FILE G(KC_E) // File explorer
 #define MC_TMGR C(S(KC_ESC)) // Task manager
 #define MC_TGLF KC_F11 // Toggle full/maximized
+#define MC_PSCR KC_PSCR // Screenshot
 
 #define MC_ZINC C(SE_PLUS) // Zoom in
 #define MC_ZDEC C(SE_MINS) // Zoom out

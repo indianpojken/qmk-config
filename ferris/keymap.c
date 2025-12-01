@@ -12,11 +12,11 @@
 #include "features/tabber.h"
 
 enum layers {
-    DEF,
-    NAV,
-    EXT,
-    SYM,
-    NUM,
+  DEF,
+  NAV,
+  EXT,
+  SYM,
+  NUM,
 };
 
 enum keycodes {
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [EXT] = LAYOUT_ferris_hlc(
     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX,         XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,
-    XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, XXXXXXX,         KC_PSCR, MC_FILE, MC_TMGR, MC_TGLF, MC_QUIT,
+    XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, XXXXXXX,         MC_PSCR, MC_FILE, MC_TMGR, MC_TGLF, MC_QUIT,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                _______, _______,         KC_ENT,  _______,
 
@@ -122,13 +122,13 @@ tabber_t tabber = {
 };
 
 tabber_action_t tabber_prev = {
-    .normal = C(S(KC_TAB)),
-    .active = A(S(KC_TAB)),
+  .normal = C(S(KC_TAB)),
+  .active = A(S(KC_TAB)),
 };
 
 tabber_action_t tabber_next = {
-    .normal = C(KC_TAB),
-    .active = A(KC_TAB),
+  .normal = C(KC_TAB),
+  .active = A(KC_TAB),
 };
 
 bool is_tabber_ignored_key(uint16_t keycode) {
