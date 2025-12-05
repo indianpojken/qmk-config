@@ -76,9 +76,9 @@ layers:
     - $$mdi:table$$
     - $$mdi:table-arrow-right$$
     - $$mdi:card-search$$
-    - $$mdi:arrow-collapse-left$$
-    - $$mdi:arrow-collapse-down$$
     - $$mdi:arrow-collapse-up$$
+    - $$mdi:arrow-collapse-left$$
+    - $$mdi:arrow-up$$
     - $$mdi:arrow-collapse-right$$
     - $$mdi:caps-lock$$
     - { t: $$mdi:apple-keyboard-command$$, type: mod }
@@ -86,16 +86,16 @@ layers:
     - { t: $$mdi:apple-keyboard-shift$$, type: mod }
     - { t: $$mdi:apple-keyboard-control$$, type: mod }
     - $$mdi:keyboard-tab$$
+    - $$mdi:arrow-collapse-down$$
     - $$mdi:arrow-left$$
     - $$mdi:arrow-down$$
-    - $$mdi:arrow-up$$
     - $$mdi:arrow-right$$
     - $$mdi:keyboard-esc$$
     - $$mdi:undo-variant$$
     - $$mdi:content-cut$$
     - $$mdi:content-copy$$
     - $$mdi:content-paste$$
-    - $$mdi:repeat$$
+    - $$mdi:selection$$
     - $$mdi:repeat$$
     - $$mdi:backspace-outline$$
     - $$mdi:backspace$$
@@ -162,15 +162,15 @@ layers:
     - { t: $$mdi:apple-keyboard-option$$, type: mod }
     - { t: $$mdi:apple-keyboard-command$$, type: mod }
     - "+"
-    - "/"
     - ":"
+    - "/"
     - ";"
     - "%"
-    - "€"
-    - "&"
-    - "|"
-    - "\\"
     - "$"
+    - "&"
+    - "\\"
+    - "|"
+    - "€"
     - NAV
     - { t: ▽, type: trans }
     - { t: ▽, type: trans }

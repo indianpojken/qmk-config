@@ -46,9 +46,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV] = LAYOUT_ferris_hlc(
-    LA_EXT,  TB_PREV, TB_REP,  TB_NEXT, MC_LCHR,         KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_CAPS,
-    OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_TAB,          KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_ESC,
-    MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,QK_REP,          QK_REP,  KC_BSPC, MC_WBSPC,KC_DEL,  KC_APP,
+    LA_EXT,  TB_PREV, TB_REP,  TB_NEXT, MC_LCHR,         KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_CAPS,
+    OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_TAB,          KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,KC_ESC,
+    MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,         QK_REP,  KC_BSPC, MC_WBSPC,KC_DEL,  KC_APP,
                               _______, _______,          KC_ENT,  _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYM] = LAYOUT_ferris_hlc(
     SE_CIRC, SE_LBRC, SE_LCBR, SE_LPRN, SE_LABK,         SE_RABK, SE_RPRN, SE_RCBR, SE_RBRC, SE_TILD,
     SE_MINS, SE_ASTR, SE_UNDS, SE_EQL,  SE_AT,           SE_HASH, OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-    SE_PLUS, SE_SLSH, SE_COLN, SE_SCLN, SE_PERC,         SE_EURO, SE_AMPR, SE_PIPE, SE_BSLS, SE_DLR,
+    SE_PLUS, SE_COLN, SE_SLSH, SE_SCLN, SE_PERC,         SE_DLR,  SE_AMPR, SE_BSLS, SE_PIPE, SE_EURO,
                                _______, _______,         _______, _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX

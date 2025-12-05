@@ -4,6 +4,7 @@
 #define MC_CUT   C(KC_X)
 #define MC_COPY  C(KC_C)
 #define MC_PASTE C(KC_V)
+#define MC_SLCT  C(KC_A)
 #define MC_WBSPC C(KC_BSPC)
 
 #define MC_LCHR A(KC_SPC) // launcher
