@@ -71,21 +71,21 @@ layers:
       SYM,
     ]
   NAV:
-    - EXT
+    - $$mdi:menu$$
     - $$mdi:table-arrow-left$$
     - $$mdi:table$$
     - $$mdi:table-arrow-right$$
-    - $$mdi:card-search$$
+    - EXT
     - $$mdi:arrow-collapse-up$$
-    - $$mdi:arrow-collapse-left$$
+    - $$mdi:backspace-outline$$
     - $$mdi:arrow-up$$
-    - $$mdi:arrow-collapse-right$$
+    - $$mdi:backspace-reverse-outline$$
     - $$mdi:caps-lock$$
     - { t: $$mdi:apple-keyboard-command$$, type: mod }
     - { t: $$mdi:apple-keyboard-option$$, type: mod }
     - { t: $$mdi:apple-keyboard-shift$$, type: mod }
     - { t: $$mdi:apple-keyboard-control$$, type: mod }
-    - $$mdi:keyboard-tab$$
+    - $$mdi:card-search$$
     - $$mdi:arrow-collapse-down$$
     - $$mdi:arrow-left$$
     - $$mdi:arrow-down$$
@@ -97,10 +97,10 @@ layers:
     - $$mdi:content-paste$$
     - $$mdi:selection$$
     - $$mdi:repeat$$
-    - $$mdi:backspace-outline$$
-    - $$mdi:backspace$$
-    - $$mdi:backspace-reverse-outline$$
-    - $$mdi:menu$$
+    - $$mdi:keyboard-tab$$
+    - $$mdi:arrow-collapse-left$$
+    - $$mdi:arrow-collapse-right$$
+    - $$mdi:printer-outline$$
     - { t: "", type: held }
     - { t: ▽, type: trans }
     - $$mdi:keyboard-return$$
@@ -121,7 +121,7 @@ layers:
     - $$mdi:magnify-remove-outline$$
     - $$mdi:magnify-plus-outline$$
     - ""
-    - $$mdi:printer-outline$$
+    - ""
     - $$mdi:folder-multiple-outline$$
     - $$mdi:file-tree-outline$$
     - $$mdi:fullscreen$$

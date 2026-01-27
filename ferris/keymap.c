@@ -25,8 +25,6 @@ enum keycodes {
   OS_SHFT,
   OS_CTRL,
 
-  TB_REP,
-  TB_PREV,
   TB_NEXT,
 };
 
@@ -34,6 +32,9 @@ enum keycodes {
 #define LA_SYM MO(SYM)
 #define LA_NUM MO(NUM)
 #define LA_EXT OSL(EXT)
+
+#define TB_LEFT  C(S(KC_TAB))
+#define TB_RIGHT C(KC_TAB)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [DEF] = LAYOUT_ferris_hlc(
@@ -46,9 +47,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV] = LAYOUT_ferris_hlc(
-    LA_EXT,  TB_PREV, TB_REP,  TB_NEXT, MC_LCHR,         KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_CAPS,
-    OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_TAB,          KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,KC_ESC,
-    MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,         QK_REP,  KC_BSPC, MC_WBSPC,KC_DEL,  KC_APP,
+    KC_APP,  TB_LEFT, TB_NEXT, TB_RIGHT,LA_EXT,          KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  KC_CAPS,
+    OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, MC_LCHR,         KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,KC_ESC,
+    MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,         QK_REP,  KC_TAB,  KC_HOME, KC_END,  MC_PSCR,
                               _______, _______,          KC_ENT,  _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -56,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [EXT] = LAYOUT_ferris_hlc(
     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX,         XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,
-    XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, XXXXXXX,         MC_PSCR, MC_FILE, MC_TMGR, MC_TGLF, MC_QUIT,
+    XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, XXXXXXX,         XXXXXXX, MC_FILE, MC_TMGR, MC_TGLF, MC_QUIT,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                _______, _______,         KC_ENT,  _______,
 
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     SE_CIRC, SE_LBRC, SE_LCBR, SE_LPRN, SE_LABK,         SE_RABK, SE_RPRN, SE_RCBR, SE_RBRC, SE_TILD,
     SE_MINS, SE_ASTR, SE_UNDS, SE_EQL,  SE_AT,           SE_HASH, OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
     SE_PLUS, SE_COLN, SE_SLSH, SE_SCLN, SE_PERC,         SE_DLR,  SE_AMPR, SE_BSLS, SE_PIPE, SE_EURO,
-                               _______, _______,         _______, _______,
+                               _______, _______,         KC_SPC,  _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
@@ -76,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_7,    KC_5,    KC_3,    KC_1,    KC_9,            KC_8,    KC_0,    KC_2,    KC_4,    KC_6,
     OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_F11,          KC_F12,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
     KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,           KC_F8,   KC_F12,  KC_F2,   KC_F4,   KC_F6,
-                                _______, _______,        _______, _______,
+                                _______, _______,        KC_SPC,  _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
@@ -84,12 +85,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
   switch (keycode) {
+  case TB_LEFT:
+  case TB_NEXT:
+  case TB_RIGHT:
+
   case LA_NAV:
-  case LA_EXT:
   case LA_SYM:
-    return true;
+      return true;
   default:
-    return false;
+      return false;
   }
 }
 
@@ -114,33 +118,24 @@ oneshot_state os_alt_state = os_up_unqueued;
 oneshot_state os_shft_state = os_up_unqueued;
 oneshot_state os_ctrl_state = os_up_unqueued;
 
-tabber_t tabber = {
-  .enabled = false,
-  .previous = KC_NO,
-
-  .modifier = KC_LALT,
-};
-
-tabber_action_t tabber_prev = {
-  .normal = C(S(KC_TAB)),
-  .active = A(S(KC_TAB)),
-};
-
-tabber_action_t tabber_next = {
-  .normal = C(KC_TAB),
-  .active = A(KC_TAB),
-};
-
 bool is_tabber_ignored_key(uint16_t keycode) {
   switch (keycode) {
-  case TB_REP:
-  case TB_PREV:
-  case TB_NEXT:
+  case KC_UP:
+  case KC_DOWN:
+  case KC_LEFT:
+  case KC_RIGHT:
     return true;
   default:
     return false;
   }
 }
+
+tabber_t tabber = {
+  .enabled = false,
+
+  .modifier = KC_LGUI,
+  .key = KC_TAB,
+};
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   update_oneshot(
@@ -164,17 +159,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   );
 
   update_tabber(
-    &tabber, TB_REP,
-    keycode, record
-  );
-
-  update_tabber_action(
-    &tabber, &tabber_prev, TB_PREV,
-    keycode, record
-  );
-
-  update_tabber_action(
-    &tabber, &tabber_next, TB_NEXT,
+    &tabber, TB_NEXT,
     keycode, record
   );
 
