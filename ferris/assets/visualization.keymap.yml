@@ -86,7 +86,7 @@ layers:
     - { t: $$mdi:apple-keyboard-shift$$, type: mod }
     - { t: $$mdi:apple-keyboard-control$$, type: mod }
     - $$mdi:card-search$$
-    - $$mdi:arrow-collapse-down$$
+    - $$mdi:keyboard-tab$$
     - $$mdi:arrow-left$$
     - $$mdi:arrow-down$$
     - $$mdi:arrow-right$$
@@ -96,9 +96,9 @@ layers:
     - $$mdi:content-copy$$
     - $$mdi:content-paste$$
     - $$mdi:selection$$
-    - $$mdi:repeat$$
-    - $$mdi:keyboard-tab$$
+    - $$mdi:arrow-collapse-down$$
     - $$mdi:arrow-collapse-left$$
+    - $$mdi:repeat$$
     - $$mdi:arrow-collapse-right$$
     - $$mdi:printer-outline$$
     - { t: "", type: held }
@@ -115,16 +115,16 @@ layers:
     - $$mdi:skip-backward$$
     - $$mdi:play-pause$$
     - $$mdi:skip-forward$$
-    - ""
+    - $$mdi:keyboard-caps$$
     - ""
     - $$mdi:magnify-minus-outline$$
     - $$mdi:magnify-remove-outline$$
     - $$mdi:magnify-plus-outline$$
     - ""
     - ""
+    - $$mdi:fullscreen$$
     - $$mdi:folder-multiple-outline$$
     - $$mdi:file-tree-outline$$
-    - $$mdi:fullscreen$$
     - $$mdi:close$$
     - ""
     - ""

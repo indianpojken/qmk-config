@@ -44,15 +44,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NAV] = LAYOUT_split_3x5_3_ex2(
-      KC_APP,  TB_LEFT, TB_NEXT, TB_RIGHT,LA_EXT,  XXXXXXX, XXXXXXX, KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  KC_CAPS,
-      OS_CTRL, OS_ALT,  OS_SHFT, OS_GUI,  MC_LCHR, XXXXXXX, XXXXXXX, KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,KC_ESC,
-      MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,                   QK_REP,  KC_TAB,  KC_HOME, KC_END,  MC_PSCR,
+      KC_APP,  TB_LEFT, TB_NEXT, TB_RIGHT,LA_EXT,  XXXXXXX, XXXXXXX, KC_PGUP, KC_BSPC, KC_UP,  KC_DEL,  CW_TOGG,
+      OS_CTRL, OS_ALT,  OS_SHFT, OS_GUI,  MC_LCHR, XXXXXXX, XXXXXXX, KC_TAB,  KC_LEFT, KC_DOWN,KC_RIGHT,KC_ESC,
+      MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,                   KC_PGDN, KC_HOME, QK_REP, KC_END,  MC_PSCR,
                         _______, _______, _______,                   KC_ENT, _______, _______
     ),
 
     [EXT] = LAYOUT_split_3x5_3_ex2(
-      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BRMU, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,
-      XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, KC_BRMD, XXXXXXX, XXXXXXX, XXXXXXX, MC_FILE, MC_TMGR, MC_TGLF, MC_QUIT,
+      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BRMU, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_CAPS,
+      XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, KC_BRMD, XXXXXXX, XXXXXXX, XXXXXXX, MC_TGLF, MC_FILE, MC_TMGR, MC_QUIT,
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                         _______, _______, _______,                   KC_ENT, _______, _______
     ),
@@ -90,7 +90,9 @@ bool is_oneshot_ignored_key(uint16_t keycode) {
   switch (keycode) {
   case LA_NAV:
   case LA_SYM:
+
   case KC_LSFT:
+
   case OS_SHFT:
   case OS_CTRL:
   case OS_ALT:
@@ -156,4 +158,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, SYM, NAV, NUM);
+}
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        case SE_MINS:
+
+        case KC_A ... KC_Z:
+        case SE_ADIA:
+        case SE_ARNG:
+        case SE_ODIA:
+          add_weak_mods(MOD_BIT(KC_LSFT));
+          return true;
+
+        case KC_1 ... KC_0:
+
+        case KC_BSPC:
+        case KC_DEL:
+
+        case SE_UNDS:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
 }
