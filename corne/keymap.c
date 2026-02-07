@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [NAV] = LAYOUT_split_3x5_3_ex2(
       KC_APP,  TB_LEFT, TB_NEXT, TB_RIGHT,LA_EXT,  XXXXXXX, XXXXXXX, KC_PGUP, KC_BSPC, KC_UP,  KC_DEL,  CW_TOGG,
-      OS_CTRL, OS_ALT,  OS_SHFT, OS_GUI,  MC_LCHR, XXXXXXX, XXXXXXX, KC_TAB,  KC_LEFT, KC_DOWN,KC_RIGHT,KC_ESC,
+      OS_CTRL, OS_ALT,  OS_SHFT, OS_GUI,  MC_LCHR, XXXXXXX, XXXXXXX, KC_TAB,  KC_LEFT, KC_DOWN,KC_RIGHT,KC_CAPS,
       MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,                   KC_PGDN, KC_HOME, QK_REP, KC_END,  MC_PSCR,
                         _______, _______, _______,                   KC_ENT, _______, _______
     ),
@@ -153,6 +153,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     keycode, record
   );
 
+  if (keycode == KC_CAPS && record->event.pressed) {
+    tap_code(KC_CAPS);
+    return false;
+  }
+
   return true;
 }
 
@@ -180,6 +185,6 @@ bool caps_word_press_user(uint16_t keycode) {
             return true;
 
         default:
-            return false;  // Deactivate Caps Word.
+            return false;
     }
 }
