@@ -45,14 +45,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [NAV] = LAYOUT_split_3x5_3_ex2(
       KC_APP,  TB_LEFT, TB_NEXT, TB_RIGHT,LA_EXT,  XXXXXXX, XXXXXXX, KC_PGUP, KC_BSPC, KC_UP,  KC_DEL,  CW_TOGG,
-      OS_CTRL, OS_ALT,  OS_SHFT, OS_GUI,  MC_LCHR, XXXXXXX, XXXXXXX, KC_TAB,  KC_LEFT, KC_DOWN,KC_RIGHT,KC_CAPS,
+      OS_CTRL, OS_ALT,  OS_SHFT, OS_GUI,  MC_LCHR, XXXXXXX, XXXXXXX, KC_TAB,  KC_LEFT, KC_DOWN,KC_RIGHT,KC_ESC,
       MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,                   KC_PGDN, KC_HOME, QK_REP, KC_END,  MC_PSCR,
                         _______, _______, _______,                   KC_ENT, _______, _______
     ),
 
     [EXT] = LAYOUT_split_3x5_3_ex2(
-      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BRMU, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_CAPS,
-      XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, KC_BRMD, XXXXXXX, XXXXXXX, XXXXXXX, MC_TGLF, MC_FILE, MC_TMGR, MC_QUIT,
+      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, _______, XXXXXXX, XXXXXXX, KC_BRMU, KC_MPRV, KC_MPLY, KC_MNXT, KC_CAPS,
+      XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRMD, MC_TGLF, MC_FILE, MC_TMGR, MC_QUIT,
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                         _______, _______, _______,                   KC_ENT, _______, _______
     ),
@@ -153,6 +153,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     keycode, record
   );
 
+  // fix mac caps
   if (keycode == KC_CAPS && record->event.pressed) {
     tap_code(KC_CAPS);
     return false;
@@ -185,6 +186,6 @@ bool caps_word_press_user(uint16_t keycode) {
             return true;
 
         default:
-            return false;
+            return false;  // Deactivate Caps Word.
     }
 }
