@@ -4,6 +4,7 @@ draw_config:
   svg_extra_style: |
     rect.key, rect.combo { fill: #313244; stroke: none; }
     rect.combo { fill: #1e1e2e; }
+    path.combo { stroke: #585b70; }
     svg.keymap { background-color: #1e1e2e; }
     .layer-DEF text, .layer-DEF use, .layer-DEF rect.held { fill: #cfbd99; }
     .layer-NAV text, .layer-NAV use, .layer-NAV rect.held { fill: #89b4fa; }
@@ -24,6 +25,23 @@ combos:
   - { p: [6, 7], k: Å, l: [DEF] }
   - { p: [16, 17], k: Ä, l: [DEF] }
   - { p: [26, 27], k: Ö, l: [DEF] }
+
+  - { p: [1, 2], k: $$mdi:magnify-minus-outline$$, l: [NAV] }
+  - {
+      p: [1, 2, 3],
+      k: $$mdi:magnify-remove-outline$$,
+      a: "top",
+      o: 0.25,
+      l: [NAV],
+    }
+  - { p: [2, 3], k: $$mdi:magnify-plus-outline$$, l: [NAV] }
+  - { p: [26, 27], k: $$mdi:volume-minus$$, l: [NAV] }
+  - { p: [26, 27, 28], k: $$mdi:volume-off$$, l: [NAV], o: 0.1, a: "bottom" }
+  - { p: [27, 28], k: $$mdi:volume-plus$$, l: [NAV] }
+  - { p: [6, 7], k: $$mdi:backspace$$, l: [NAV] }
+  - { p: [7, 8], k: $$mdi:backspace-reverse$$, l: [NAV] }
+  - { p: [16, 17], k: $$mdi:arrow-collapse-left$$, l: [NAV] }
+  - { p: [17, 18], k: $$mdi:arrow-collapse-right$$, l: [NAV] }
 
   - { p: [1, 2], k: "!=", l: [SYM] }
   - { p: [2, 3], k: "<=", l: [SYM] }
@@ -71,16 +89,16 @@ layers:
       SYM,
     ]
   NAV:
-    - $$mdi:menu$$
+    - $$mdi:selection$$
     - $$mdi:table-arrow-left$$
     - $$mdi:table$$
     - $$mdi:table-arrow-right$$
-    - EXT
+    - $$mdi:printer-outline$$
     - $$mdi:arrow-collapse-up$$
     - $$mdi:backspace-outline$$
     - $$mdi:arrow-up$$
     - $$mdi:backspace-reverse-outline$$
-    - $$mdi:caps-lock$$
+    - { t: $$mdi:caps-lock$$, s: $$mdi:keyboard-caps$$ }
     - { t: $$mdi:apple-keyboard-command$$, type: mod }
     - { t: $$mdi:apple-keyboard-option$$, type: mod }
     - { t: $$mdi:apple-keyboard-shift$$, type: mod }
@@ -90,55 +108,20 @@ layers:
     - $$mdi:arrow-left$$
     - $$mdi:arrow-down$$
     - $$mdi:arrow-right$$
-    - $$mdi:keyboard-esc$$
+    - { t: $$mdi:keyboard-esc$$, s: $$mdi:close$$ }
     - $$mdi:undo-variant$$
     - $$mdi:content-cut$$
     - $$mdi:content-copy$$
     - $$mdi:content-paste$$
-    - $$mdi:selection$$
+    - $$mdi:redo-variant$$
     - $$mdi:arrow-collapse-down$$
-    - $$mdi:arrow-collapse-left$$
-    - $$mdi:repeat$$
-    - $$mdi:arrow-collapse-right$$
-    - $$mdi:printer-outline$$
-    - { t: "", type: held }
-    - { t: ▽, type: trans }
-    - $$mdi:keyboard-return$$
-    - SYM
-  EXT:
-    - ""
-    - $$mdi:volume-minus$$
-    - $$mdi:volume-off$$
-    - $$mdi:volume-plus$$
-    - ""
-    - ""
     - $$mdi:skip-backward$$
     - $$mdi:play-pause$$
     - $$mdi:skip-forward$$
-    - $$mdi:keyboard-caps$$
-    - ""
-    - $$mdi:magnify-minus-outline$$
-    - $$mdi:magnify-remove-outline$$
-    - $$mdi:magnify-plus-outline$$
-    - ""
-    - ""
-    - $$mdi:fullscreen$$
-    - $$mdi:folder-multiple-outline$$
-    - $$mdi:file-tree-outline$$
-    - $$mdi:close$$
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - NAV
+    - { t: $$mdi:menu$$, s: $$mdi:file-tree-outline$$ }
+    - { t: "", type: held }
     - { t: ▽, type: trans }
-    - { t: ▽, type: trans }
+    - $$mdi:keyboard-return$$
     - SYM
   SYM:
     - "^"
@@ -191,7 +174,7 @@ layers:
     - { t: $$mdi:apple-keyboard-shift$$, type: mod }
     - { t: $$mdi:apple-keyboard-control$$, type: mod }
     - F11
-    - F10
+    - F12
     - { t: $$mdi:apple-keyboard-control$$, type: mod }
     - { t: $$mdi:apple-keyboard-shift$$, type: mod }
     - { t: $$mdi:apple-keyboard-option$$, type: mod }
@@ -202,7 +185,7 @@ layers:
     - F1
     - F9
     - F8
-    - F12
+    - F10
     - F2
     - F4
     - F6

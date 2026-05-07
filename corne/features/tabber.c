@@ -32,3 +32,15 @@ void update_tabber(
     unregister_code16(tabber->key);
   }
 }
+
+void process_tabber_action(
+    uint16_t trigger,
+    uint16_t action,
+
+    uint16_t keycode,
+    keyrecord_t *record
+) {
+    if (keycode == trigger && record->event.pressed) {
+        tap_code16(action);
+    }
+}

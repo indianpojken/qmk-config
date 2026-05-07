@@ -2,10 +2,11 @@
 
 #include "keymap_swedish_pro_mac_ansi.h"
 
-#include "g/keymap_combo.h"
-
+#include "keydefs/keycodes.h"
 #include "keydefs/macros.h"
 #include "keydefs/overrides.h"
+
+#include "g/keymap_combo.h"
 
 #include "features/oneshot.h"
 #include "features/tabber.h"
@@ -13,27 +14,16 @@
 enum layers {
   DEF,
   NAV,
-  EXT,
   SYM,
   NUM,
-};
-
-enum keycodes {
-  OS_GUI = SAFE_RANGE,
-  OS_ALT,
-  OS_SHFT,
-  OS_CTRL,
-
-  TB_NEXT,
 };
 
 #define LA_NAV MO(NAV)
 #define LA_SYM MO(SYM)
 #define LA_NUM MO(NUM)
-#define LA_EXT OSL(EXT)
 
-#define TB_LEFT  C(S(KC_TAB))
-#define TB_RIGHT C(KC_TAB)
+#define TAB_L G(S(KC_TAB))
+#define TAB_R G(KC_TAB)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [DEF] = LAYOUT_split_3x5_3_ex2(
@@ -44,16 +34,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NAV] = LAYOUT_split_3x5_3_ex2(
-      KC_APP,  TB_LEFT, TB_NEXT, TB_RIGHT,LA_EXT,  XXXXXXX, XXXXXXX, KC_PGUP, KC_BSPC, KC_UP,  KC_DEL,  CW_TOGG,
+      QK_REP,  KC_TABL, TB_NEXT, KC_TABR, MC_PSCR, XXXXXXX, XXXXXXX, KC_PGUP, KC_BSPC, KC_UP,  KC_DEL,  CW_TOGG,
       OS_CTRL, OS_ALT,  OS_SHFT, OS_GUI,  MC_LCHR, XXXXXXX, XXXXXXX, KC_TAB,  KC_LEFT, KC_DOWN,KC_RIGHT,KC_ESC,
-      MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,                   KC_PGDN, KC_HOME, QK_REP, KC_END,  MC_PSCR,
-                        _______, _______, _______,                   KC_ENT, _______, _______
-    ),
-
-    [EXT] = LAYOUT_split_3x5_3_ex2(
-      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, _______, XXXXXXX, XXXXXXX, KC_BRMU, KC_MPRV, KC_MPLY, KC_MNXT, KC_CAPS,
-      XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, XXXXXXX, XXXXXXX, XXXXXXX, KC_BRMD, MC_TGLF, MC_FILE, MC_TMGR, MC_QUIT,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,                   KC_PGDN, KC_MPRV, KC_MPLY,KC_MNXT, KC_APP,
                         _______, _______, _______,                   KC_ENT, _______, _______
     ),
 
@@ -67,16 +50,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NUM] = LAYOUT_split_3x5_3_ex2(
       KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    XXXXXXX, XXXXXXX, KC_8,    KC_0,    KC_2,    KC_4,    KC_6,
       OS_CTRL, OS_ALT,  OS_SHFT, OS_GUI,  KC_F11,  XXXXXXX, XXXXXXX, KC_F12,  OS_GUI,  OS_SHFT, OS_ALT,  OS_CTRL,
-      KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                     KC_F8,   KC_F12,  KC_F2,   KC_F4,   KC_F6,
+      KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                     KC_F8,   KC_F10,  KC_F2,   KC_F4,   KC_F6,
                         _______, _______, _______,                   KC_SPC, _______, _______
     ),
  };
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
   switch (keycode) {
-  case TB_LEFT:
+  case KC_TABL:
   case TB_NEXT:
-  case TB_RIGHT:
+  case KC_TABR:
 
   case LA_NAV:
   case LA_SYM:
@@ -153,6 +136,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     keycode, record
   );
 
+  process_tabber_action(
+    KC_TABL, TAB_L,
+    keycode, record
+  );
+
+  process_tabber_action(
+    KC_TABR, TAB_R,
+    keycode, record
+  );
+
   // fix mac caps
   if (keycode == KC_CAPS && record->event.pressed) {
     tap_code(KC_CAPS);
@@ -186,6 +179,6 @@ bool caps_word_press_user(uint16_t keycode) {
             return true;
 
         default:
-            return false;  // Deactivate Caps Word.
+            return false;
     }
 }

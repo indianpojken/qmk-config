@@ -19,3 +19,11 @@ void update_tabber(
 );
 
 bool is_tabber_ignored_key(uint16_t keycode);
+
+void process_tabber_action(
+    uint16_t trigger,
+    uint16_t action,
+
+    uint16_t keycode,
+    keyrecord_t *record
+);

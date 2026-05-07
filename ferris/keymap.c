@@ -3,10 +3,11 @@
 #include "keymap_swedish.h"
 #include "sendstring_swedish.h"
 
-#include "g/keymap_combo.h"
-
+#include "keydefs/keycodes.h"
 #include "keydefs/macros.h"
 #include "keydefs/overrides.h"
+
+#include "g/keymap_combo.h"
 
 #include "features/oneshot.h"
 #include "features/tabber.h"
@@ -14,18 +15,8 @@
 enum layers {
   DEF,
   NAV,
-  EXT,
   SYM,
   NUM,
-};
-
-enum keycodes {
-  OS_GUI = SAFE_RANGE,
-  OS_ALT,
-  OS_SHFT,
-  OS_CTRL,
-
-  TB_NEXT,
 };
 
 #define LA_NAV MO(NAV)
@@ -47,19 +38,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV] = LAYOUT_ferris_hlc(
-    KC_APP,  TB_LEFT, TB_NEXT, TB_RIGHT,LA_EXT,          KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  CW_TOGG,
+    MC_SLCT, KC_TABL, TB_NEXT, KC_TABR, MC_PSCR,         KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  CW_TOGG,
     OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, MC_LCHR,         KC_TAB,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_ESC,
-    MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_SLCT,         KC_PGDN, KC_HOME, QK_REP , KC_END,  MC_PSCR,
+    MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_REDO,         KC_PGDN, KC_MPRV, KC_MPLY, KC_MNXT, KC_APP,
                               _______, _______,          KC_ENT,  _______,
-
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-  ),
-
-  [EXT] = LAYOUT_ferris_hlc(
-    XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, _______,         XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_CAPS,
-    XXXXXXX, MC_ZDEC, MC_ZRST, MC_ZINC, XXXXXXX,         XXXXXXX, MC_TGLF, MC_FILE, MC_TMGR, MC_QUIT,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                               _______, _______,         KC_ENT,  _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
@@ -76,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [NUM] = LAYOUT_ferris_hlc(
     KC_7,    KC_5,    KC_3,    KC_1,    KC_9,            KC_8,    KC_0,    KC_2,    KC_4,    KC_6,
     OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_F11,          KC_F12,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-    KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,           KC_F8,   KC_F12,  KC_F2,   KC_F4,   KC_F6,
+    KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,           KC_F8,   KC_F10,  KC_F2,   KC_F4,   KC_F6,
                                 _______, _______,        KC_SPC,  _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -85,9 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
   switch (keycode) {
-  case TB_LEFT:
+  case KC_TABL:
   case TB_NEXT:
-  case TB_RIGHT:
+  case KC_TABR:
 
   case LA_NAV:
   case LA_SYM:
@@ -162,6 +144,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   update_tabber(
     &tabber, TB_NEXT,
+    keycode, record
+  );
+
+  process_tabber_action(
+    KC_TABL, TAB_L,
+    keycode, record
+  );
+
+  process_tabber_action(
+    KC_TABR, TAB_R,
     keycode, record
   );
 
