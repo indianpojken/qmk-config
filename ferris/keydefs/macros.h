@@ -19,3 +19,9 @@
 #define MC_DWRD C(KC_DEL)
 
 #define MC_QUIT A(KC_F4)
+
+#define MC_TABL C(S(KC_TAB))
+#define MC_TABR C(KC_TAB)
+#define MC_TABC C(KC_W)
+#define MC_TABN C(KC_T)
+#define MC_TABU C(S(KC_T))

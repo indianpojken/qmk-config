@@ -1,4 +1,4 @@
-#define COMBO_TERM 30
+#define COMBO_TERM 40
 #define CAPS_WORD_IDLE_TIMEOUT 0
 
 #ifdef RGB_MATRIX_ENABLE

@@ -11,6 +11,8 @@
 
 #include "features/oneshot.h"
 #include "features/tabber.h"
+#include "features/macro.h"
+#include "features/magic_caps.h"
 
 enum layers {
   DEF,
@@ -22,10 +24,6 @@ enum layers {
 #define LA_NAV MO(NAV)
 #define LA_SYM MO(SYM)
 #define LA_NUM MO(NUM)
-#define LA_EXT OSL(EXT)
-
-#define TB_LEFT  C(S(KC_TAB))
-#define TB_RIGHT C(KC_TAB)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [DEF] = LAYOUT_ferris_hlc(
@@ -38,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV] = LAYOUT_ferris_hlc(
-    MC_SLCT, KC_TABL, TB_NEXT, KC_TABR, MC_PSCR,         KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  CW_TOGG,
+    MC_PSCR, KC_TABL, TB_NEXT, KC_TABR, KC_TABC,         KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  CW_TOGG,
     OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, MC_LCHR,         KC_TAB,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_ESC,
     MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_REDO,         KC_PGDN, KC_MPRV, KC_MPLY, KC_MNXT, KC_APP,
                               _______, _______,          KC_ENT,  _______,
@@ -82,7 +80,6 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
 bool is_oneshot_ignored_key(uint16_t keycode) {
   switch (keycode) {
   case LA_NAV:
-  case LA_EXT:
   case LA_SYM:
 
   case KC_LSFT:
@@ -117,7 +114,7 @@ bool is_tabber_ignored_key(uint16_t keycode) {
 tabber_t tabber = {
   .enabled = false,
 
-  .modifier = KC_LGUI,
+  .modifier = KC_LALT,
   .key = KC_TAB,
 };
 
@@ -147,15 +144,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     keycode, record
   );
 
-  process_tabber_action(
-    KC_TABL, TAB_L,
+  process_macro_key(
+    KC_TABL, MC_TABL,
     keycode, record
   );
 
-  process_tabber_action(
-    KC_TABR, TAB_R,
+  process_macro_key(
+    KC_TABR, MC_TABR,
     keycode, record
   );
+
+  process_macro_key(
+    KC_TABC, MC_TABC,
+    keycode, record
+  );
+
+  if (!process_magic_caps(keycode, record)) {
+    return false;
+  }
 
   return true;
 }
