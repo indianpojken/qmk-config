@@ -5,6 +5,7 @@ SRC += features/oneshot.c
 SRC += features/tabber.c
 SRC += features/macro.c
 SRC += features/magic_caps.c
+SRC += features/oneshot_fn.c
 
 ENCODER_ENABLE = no
 ENCODER_MAP_ENABLE = no

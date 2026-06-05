@@ -13,6 +13,7 @@
 #include "features/tabber.h"
 #include "features/macro.h"
 #include "features/magic_caps.h"
+#include "features/oneshot_fn.h"
 
 enum layers {
   DEF,
@@ -47,16 +48,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYM] = LAYOUT_ferris_hlc(
     SE_CIRC, SE_LBRC, SE_LCBR, SE_LPRN, SE_LABK,         SE_RABK, SE_RPRN, SE_RCBR, SE_RBRC, SE_TILD,
     SE_MINS, SE_ASTR, SE_UNDS, SE_EQL,  SE_AT,           SE_HASH, OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-    SE_PLUS, SE_COLN, SE_SLSH, SE_SCLN, SE_PERC,         SE_DLR,  SE_AMPR, SE_BSLS, SE_PIPE, SE_EURO,
+    SE_PLUS, SE_COLN, SE_SCLN, SE_SLSH, SE_PERC,         SE_DLR,  SE_BSLS, SE_AMPR, SE_PIPE, SE_GRV,
                                _______, _______,         KC_SPC,  _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
   [NUM] = LAYOUT_ferris_hlc(
-    KC_7,    KC_5,    KC_3,    KC_1,    KC_9,            KC_8,    KC_0,    KC_2,    KC_4,    KC_6,
-    OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, KC_F11,          KC_F12,  OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-    KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,           KC_F8,   KC_F10,  KC_F2,   KC_F4,   KC_F6,
+    XXXXXXX, SE_EQL,  SE_SLSH, SE_ASTR, XXXXXXX,         XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX,
+    OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, OS_FN,           XXXXXXX, KC_4,    KC_5,    KC_6,    KC_0,
+    XXXXXXX, SE_DOT,  SE_MINS, SE_PLUS, XXXXXXX,         XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,
                                 _______, _______,        KC_SPC,  _______,
 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -88,6 +89,7 @@ bool is_oneshot_ignored_key(uint16_t keycode) {
   case OS_CTRL:
   case OS_ALT:
   case OS_GUI:
+  case OS_FN:
     return true;
   default:
     return false;
@@ -118,6 +120,26 @@ tabber_t tabber = {
   .key = KC_TAB,
 };
 
+bool os_fn_pending = false;
+
+uint16_t oneshot_fn_press_user(uint16_t keycode) {
+  switch (keycode) {
+    case KC_1:    return KC_F1;
+    case KC_2:    return KC_F2;
+    case KC_3:    return KC_F3;
+    case KC_4:    return KC_F4;
+    case KC_5:    return KC_F5;
+    case KC_6:    return KC_F6;
+    case KC_7:    return KC_F7;
+    case KC_8:    return KC_F8;
+    case KC_9:    return KC_F9;
+    case SE_EQL:  return KC_F10;
+    case SE_SLSH: return KC_F11;
+    case SE_ASTR: return KC_F12;
+    default:      return KC_NO;
+  }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   update_oneshot(
     &os_gui_state, KC_LGUI, OS_GUI,
@@ -138,6 +160,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     &os_ctrl_state, KC_LCTL, OS_CTRL,
     keycode, record
   );
+
+  if (!update_oneshot_fn(&os_fn_pending, OS_FN, keycode, record)) {
+    return false;
+  }
 
   update_tabber(
     &tabber, TB_NEXT,
@@ -167,6 +193,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
+  os_fn_pending = false; // cancel OS_FN on layer change
   return update_tri_layer_state(state, SYM, NAV, NUM);
 }
 

@@ -7,6 +7,7 @@ enum keycodes {
   OS_ALT,
   OS_SHFT,
   OS_CTRL,
+  OS_FN,
 
   TB_NEXT,
 

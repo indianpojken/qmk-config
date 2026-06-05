@@ -46,7 +46,6 @@ combos:
 
     - { p: [1, 2], k: "!=", l: [SYM] }
     - { p: [2, 3], k: "<=", l: [SYM] }
-    - { p: [3, 4], k: "`", l: [SYM] }
     - { p: [5, 6], k: ´, l: [SYM] }
     - { p: [11, 12], k: "=>", l: [SYM] }
     - { p: [12, 13], k: ".{", l: [SYM] }
@@ -153,49 +152,49 @@ layers:
         - { t: $$mdi:apple-keyboard-command$$, type: mod }
         - "+"
         - ":"
-        - "/"
         - ";"
+        - "/"
         - "%"
         - "$"
-        - "&"
         - "\\"
+        - "&"
         - "|"
-        - "€"
+        - "`"
         - NAV
         - { t: ▽, type: trans }
         - { t: ▽, type: trans }
         - { t: "", type: held }
     NUM:
-        - 7
-        - 5
-        - 3
-        - 1
-        - 9
-        - 8
-        - 0
-        - 2
-        - 4
-        - 6
+        - ""
+        - { t: "=", s: $$mdi:keyboard-f10$$ }
+        - { t: "/", s: $$mdi:keyboard-f11$$ }
+        - { t: "*", s: $$mdi:keyboard-f12$$ }
+        - ""
+        - ""
+        - { t: "7", s: $$mdi:keyboard-f7$$ }
+        - { t: "8", s: $$mdi:keyboard-f8$$ }
+        - { t: "9", s: $$mdi:keyboard-f9$$ }
+        - ""
         - { t: $$mdi:apple-keyboard-command$$, type: mod }
         - { t: $$mdi:apple-keyboard-option$$, type: mod }
         - { t: $$mdi:apple-keyboard-shift$$, type: mod }
         - { t: $$mdi:apple-keyboard-control$$, type: mod }
-        - F11
-        - F12
-        - { t: $$mdi:apple-keyboard-control$$, type: mod }
-        - { t: $$mdi:apple-keyboard-shift$$, type: mod }
-        - { t: $$mdi:apple-keyboard-option$$, type: mod }
-        - { t: $$mdi:apple-keyboard-command$$, type: mod }
-        - F7
-        - F5
-        - F3
-        - F1
-        - F9
-        - F8
-        - F10
-        - F2
-        - F4
-        - F6
+        - { t: "FN", type: mod }
+        - ""
+        - { t: "4", s: $$mdi:keyboard-f4$$ }
+        - { t: "5", s: $$mdi:keyboard-f5$$ }
+        - { t: "6", s: $$mdi:keyboard-f6$$ }
+        - "0"
+        - ""
+        - "."
+        - "-"
+        - "+"
+        - ""
+        - ""
+        - { t: "1", s: $$mdi:keyboard-f1$$ }
+        - { t: "2", s: $$mdi:keyboard-f2$$ }
+        - { t: "3", s: $$mdi:keyboard-f3$$ }
+        - ""
         - { t: "", type: held }
         - { t: ▽, type: trans }
         - { t: ▽, type: trans }
