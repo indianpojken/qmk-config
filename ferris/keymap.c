@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV] = LAYOUT_ferris_hlc(
-    MC_PSCR, KC_TABL, TB_NEXT, KC_TABR, KC_TABC,         KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  CW_TOGG,
+    MC_PSCR, KC_TABL, TB_NEXT, KC_TABR, KC_TABN,         KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  CW_TOGG,
     OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, MC_LCHR,         KC_TAB,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_ESC,
     MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_REDO,         KC_PGDN, KC_MPRV, KC_MPLY, KC_MNXT, KC_APP,
                               _______, _______,          KC_ENT,  _______,
@@ -181,7 +181,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   );
 
   process_macro_key(
-    KC_TABC, MC_TABC,
+    KC_TABN, MC_TABN,
     keycode, record
   );
 
@@ -198,25 +198,25 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 bool caps_word_press_user(uint16_t keycode) {
-    switch (keycode) {
-        case SE_MINS:
+  switch (keycode) {
+    case SE_MINS:
 
-        case KC_A ... KC_Z:
-        case SE_ADIA:
-        case SE_ARNG:
-        case SE_ODIA:
-          add_weak_mods(MOD_BIT(KC_LSFT));
-          return true;
+    case KC_A ... KC_Z:
+    case SE_ADIA:
+    case SE_ARNG:
+    case SE_ODIA:
+      add_weak_mods(MOD_BIT(KC_LSFT));
+      return true;
 
-        case KC_1 ... KC_0:
+    case KC_1 ... KC_0:
 
-        case KC_BSPC:
-        case KC_DEL:
+    case KC_BSPC:
+    case KC_DEL:
 
-        case SE_UNDS:
-            return true;
+    case SE_UNDS:
+        return true;
 
-        default:
-            return false;
-    }
+    default:
+        return false;
+  }
 }

@@ -14,7 +14,7 @@ COMB(zdec_combo, MC_ZDEC, KC_TABL, TB_NEXT)
 COMB(zrst_combo, MC_ZRST, KC_TABL, TB_NEXT, KC_TABR)
 COMB(zinc_combo, MC_ZINC, TB_NEXT, KC_TABR)
 
-COMB(tabu_combo, MC_TABU, KC_TABR, KC_TABC)
+COMB(tabu_combo, MC_TABU, KC_TABR, KC_TABN)
 
 COMB(dwrd_combo, MC_BWRD, KC_BSPC, KC_UP)
 COMB(bwrd_combo, MC_DWRD, KC_UP,   KC_DEL)

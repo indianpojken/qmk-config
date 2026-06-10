@@ -30,9 +30,9 @@ const key_override_t app_tmgr_override = ko_make_basic(
   MC_TMGR
 );
 
-const key_override_t tabc_tabn_override = ko_make_basic(
-  MOD_MASK_SHIFT, KC_TABC,
-  MC_TABN
+const key_override_t tabn_tabc_override = ko_make_basic(
+  MOD_MASK_SHIFT, KC_TABN,
+  MC_TABC
 );
 
 const key_override_t esc_quit_override = ko_make_with_layers_and_negmods(
@@ -49,6 +49,6 @@ const key_override_t *key_overrides[] = {
   &pgup_mhlu_override,
   &pgdn_whld_override,
   &app_tmgr_override,
-  &tabc_tabn_override,
+  &tabn_tabc_override,
   &esc_quit_override
 };

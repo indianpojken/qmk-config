@@ -13,5 +13,5 @@ enum keycodes {
 
   KC_TABL,
   KC_TABR,
-  KC_TABC,
+  KC_TABN,
 };

@@ -93,7 +93,7 @@ layers:
         - $$mdi:table-arrow-left$$
         - $$mdi:table$$
         - $$mdi:table-arrow-right$$
-        - { t: $$mdi:table-remove$$, s: $$mdi:table-plus$$ }
+        - { t: $$mdi:table-plus$$, s: $$mdi:table-remove$$ }
         - {
               t: $$mdi:arrow-collapse-up$$,
               s: $$material:keyboard_double_arrow_up$$,
