@@ -4,12 +4,11 @@
 #define MC_CUT   C(KC_X)
 #define MC_COPY  C(KC_C)
 #define MC_PASTE C(KC_V)
-#define MC_REDO  C(S(KC_Z))
-#define MC_SLCT  C(KC_A)
 
-#define MC_LCHR A(KC_SPC) // launcher
-#define MC_TMGR C(S(KC_ESC)) // Task manager
+#define MC_LCHR G(KC_D) // Launcher
+#define MC_TERM G(KC_T) // Terminal
 #define MC_PSCR KC_PSCR // Screenshot
+#define MC_OVRW G(KC_O) // Overview
 
 #define MC_ZINC C(SE_PLUS) // Zoom in
 #define MC_ZDEC C(SE_MINS) // Zoom out
@@ -18,7 +17,7 @@
 #define MC_BWRD C(KC_BSPC)
 #define MC_DWRD C(KC_DEL)
 
-#define MC_QUIT A(KC_F4)
+#define MC_QUIT G(KC_Q)
 
 #define MC_TABL C(S(KC_TAB))
 #define MC_TABR C(KC_TAB)

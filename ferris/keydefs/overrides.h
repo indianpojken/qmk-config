@@ -25,11 +25,6 @@ const key_override_t pgdn_whld_override = ko_make_basic(
   MS_WHLD
 );
 
-const key_override_t app_tmgr_override = ko_make_basic(
-  MOD_MASK_SHIFT, KC_APP,
-  MC_TMGR
-);
-
 const key_override_t tabn_tabc_override = ko_make_basic(
   MOD_MASK_SHIFT, KC_TABN,
   MC_TABC
@@ -48,7 +43,6 @@ const key_override_t *key_overrides[] = {
   &quot_dquo_override,
   &pgup_mhlu_override,
   &pgdn_whld_override,
-  &app_tmgr_override,
   &tabn_tabc_override,
   &esc_quit_override
 };

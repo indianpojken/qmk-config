@@ -116,7 +116,7 @@ layers:
         - $$mdi:content-cut$$
         - $$mdi:content-copy$$
         - $$mdi:content-paste$$
-        - $$mdi:redo-variant$$
+        - $$mdi:console$$
         - {
               t: $$mdi:arrow-collapse-down$$,
               s: $$material:keyboard_double_arrow_down$$,
@@ -124,7 +124,7 @@ layers:
         - $$mdi:skip-backward$$
         - $$mdi:play-pause$$
         - $$mdi:skip-forward$$
-        - { t: $$mdi:menu$$, s: $$mdi:file-tree-outline$$ }
+        - $$mdi:feature-search$$
         - { t: "", type: held }
         - { t: ▽, type: trans }
         - $$mdi:keyboard-return$$
