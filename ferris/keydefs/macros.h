@@ -4,6 +4,7 @@
 #define MC_CUT   C(KC_X)
 #define MC_COPY  C(KC_C)
 #define MC_PASTE C(KC_V)
+#define MC_REDO  C(S(KC_Z))
 
 #define MC_LCHR G(KC_D) // Launcher
 #define MC_TERM G(KC_T) // Terminal

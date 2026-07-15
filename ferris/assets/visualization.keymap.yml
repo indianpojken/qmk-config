@@ -21,7 +21,8 @@ draw_config:
 combos:
     - { p: [0, 1], k: $$mdi:keyboard-esc$$, l: [DEF] }
     - { p: [20, 21], k: $$mdi:keyboard-return$$, l: [DEF] }
-
+    - { p: [12, 13], k: $$mdi:console$$, l: [DEF] }
+    
     - { p: [6, 7], k: Å, l: [DEF] }
     - { p: [16, 17], k: Ä, l: [DEF] }
     - { p: [26, 27], k: Ö, l: [DEF] }
@@ -116,7 +117,7 @@ layers:
         - $$mdi:content-cut$$
         - $$mdi:content-copy$$
         - $$mdi:content-paste$$
-        - $$mdi:console$$
+        - $$mdi:redo-variant$$
         - {
               t: $$mdi:arrow-collapse-down$$,
               s: $$material:keyboard_double_arrow_down$$,
