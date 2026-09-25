@@ -6,8 +6,8 @@
 #define MC_PASTE C(KC_V)
 #define MC_REDO  C(S(KC_Z))
 
-#define MC_LCHR G(KC_D) // Launcher
-#define MC_TERM G(KC_T) // Terminal
+#define MC_LCHR G(KC_SPC) // Launcher
+#define MC_TERM G(KC_ENT) // Terminal
 #define MC_PSCR KC_PSCR // Screenshot
 #define MC_OVRW G(KC_O) // Overview
 
