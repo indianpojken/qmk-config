@@ -3,7 +3,7 @@
 #include QMK_KEYBOARD_H
 
 #include "keymap_swedish.h"
-#include "keydefs/macros.h"
+#include "keydefs/shortcuts.h"
 
 const key_override_t ques_exlm_override = ko_make_basic(
   MOD_MASK_SHIFT, SE_QUES,
@@ -27,16 +27,8 @@ const key_override_t pgdn_whld_override = ko_make_basic(
 
 const key_override_t tabn_tabc_override = ko_make_basic(
   MOD_MASK_SHIFT, KC_TABN,
-  MC_TABC
+  SC_TABC
 );
-
-const key_override_t esc_quit_override = ko_make_with_layers_and_negmods(
-  MOD_MASK_SHIFT, KC_ESC,
-  MC_QUIT,
-  ~0,
-  MOD_MASK_CTRL | MOD_MASK_GUI | MOD_MASK_ALT
-);
-
 
 const key_override_t *key_overrides[] = {
   &ques_exlm_override,
@@ -44,5 +36,4 @@ const key_override_t *key_overrides[] = {
   &pgup_mhlu_override,
   &pgdn_whld_override,
   &tabn_tabc_override,
-  &esc_quit_override
 };

@@ -1,24 +1,25 @@
 #include "keydefs/keycodes.h"
-#include "keydefs/macros.h"
+#include "keydefs/shortcuts.h"
 
 // DEF
-COMB(esc_combo,  KC_ESC,  KC_Q, KC_W)
-COMB(enter_combo,KC_ENT,  KC_Z, KC_X)
-COMB(term_combo, MC_TERM, KC_D, KC_F)
+COMB(enter_combo,KC_ENT,  KC_Q, KC_W)
 
 COMB(arng_combo, SE_ARNG, KC_U, KC_I) // Å
 COMB(adia_combo, SE_ADIA, KC_J, KC_K) // Ä
 COMB(odia_combo, SE_ODIA, KC_M, SE_COMM) // Ö
 
 // NAV
-COMB(zdec_combo, MC_ZDEC, KC_TABL, TB_NEXT)
-COMB(zrst_combo, MC_ZRST, KC_TABL, TB_NEXT, KC_TABR)
-COMB(zinc_combo, MC_ZINC, TB_NEXT, KC_TABR)
+COMB(zdec_combo, SC_ZDEC, KC_TABL, TB_NEXT)
+COMB(zrst_combo, SC_ZRST, KC_TABL, TB_NEXT, KC_TABR)
+COMB(zinc_combo, SC_ZINC, TB_NEXT, KC_TABR)
 
-COMB(tabu_combo, MC_TABU, KC_TABR, KC_TABN)
+COMB(tabu_combo, SC_TABU, KC_TABR, KC_TABN)
 
-COMB(dwrd_combo, MC_BWRD, KC_BSPC, KC_UP)
-COMB(bwrd_combo, MC_DWRD, KC_UP,   KC_DEL)
+COMB(wini_combo, SC_WINI, KC_PGUP,  KC_BSPC)
+COMB(wind_combo, SC_WIND, KC_PGDN,  KC_LEFT)
+
+COMB(dwrd_combo, SC_BWRD, KC_BSPC, KC_UP)
+COMB(bwrd_combo, SC_DWRD, KC_UP,   KC_DEL)
 
 COMB(home_combo, KC_HOME, KC_LEFT, KC_DOWN)
 COMB(end_combo,  KC_END,  KC_DOWN, KC_RIGHT)
@@ -28,6 +29,7 @@ COMB(volm_combo, KC_MUTE, KC_MPRV, KC_MPLY, KC_MNXT)
 COMB(volu_combo, KC_VOLU, KC_MPLY, KC_MNXT)
 
 // SYM
+COMB(grv_combo,   SE_GRV,  SE_LPRN, SE_LABK)  // `
 COMB(acut_combo,  SE_ACUT, SE_RABK, SE_RPRN)  // ´
 
 SUBS(nteq_combo,  "!=", SE_LBRC, SE_LCBR)

@@ -1,17 +1,16 @@
 #include QMK_KEYBOARD_H
 
-#include "keymap_swedish.h"
-#include "sendstring_swedish.h"
+#include "layout.h"
 
 #include "keydefs/keycodes.h"
-#include "keydefs/macros.h"
+#include "keydefs/shortcuts.h"
 #include "keydefs/overrides.h"
 
 #include "g/keymap_combo.h"
 
 #include "features/oneshot.h"
 #include "features/tabber.h"
-#include "features/macro.h"
+#include "features/shortcut.h"
 #include "features/magic_caps.h"
 #include "features/oneshot_fn.h"
 
@@ -28,39 +27,39 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [DEF] = LAYOUT_ferris_hlc(
-    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,            KC_H,    KC_J,    KC_K,    KC_L,    SE_QUOT,
-    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_N,    KC_M,    SE_COMM, SE_DOT,  SE_QUES,
-                               LA_NAV,  KC_LSFT,         KC_SPC,  LA_SYM,
+    AS(Q),    AS(W),    AS(E),    AS(R),    AS(T),          AS(Y),    AS(U),    AS(I),    AS(O),    AS(P),
+    AS(A),    AS(S),    AS(D),    AS(F),    AS(G),          AS(H),    AS(J),    AS(K),    AS(L),    AS(QUOT),
+    AS(Z),    AS(X),    AS(C),    AS(V),    AS(B),          AS(N),    AS(M),    AS(COMM), AS(DOT),  AS(QUES),
+                                    LA_NAV, KC_LSFT,        KC_SPC, LA_SYM,
 
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+                                 XX, XX, XX, XX, XX,        XX, XX, XX, XX, XX
   ),
 
   [NAV] = LAYOUT_ferris_hlc(
-    MC_PSCR, KC_TABL, TB_NEXT, KC_TABR, KC_TABN,         KC_PGUP, KC_BSPC, KC_UP,   KC_DEL,  CW_TOGG,
-    OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, MC_LCHR,         KC_TAB,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_ESC,
-    MC_UNDO, MC_CUT,  MC_COPY, MC_PASTE,MC_REDO,         KC_PGDN, KC_MPRV, KC_MPLY, KC_MNXT, MC_OVRW,
-                              _______, _______,          KC_ENT,  _______,
+    KC_ESC,   KC_TABL,  TB_NEXT,  KC_TABR,  KC_TABN,        KC_PGUP,  KC_BSPC,   KC_UP,   KC_DEL,   CW_TOGG,
+    OS_GUI,   OS_ALT,   OS_SHFT,  OS_CTRL,  SC_LCHR,        KC_PGDN,  KC_LEFT,   KC_DOWN, KC_RIGHT, KC_TAB,
+    SC_UNDO,  SC_CUT,   SC_COPY,  SC_PASTE, SC_REDO,        SC_PSCR,  KC_MPRV,   KC_MPLY, KC_MNXT,  SC_OVRW,
+                                             __, __,        KC_ENT, __,
 
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+                                 XX, XX, XX, XX, XX,        XX, XX, XX, XX, XX
   ),
 
   [SYM] = LAYOUT_ferris_hlc(
-    SE_CIRC, SE_LBRC, SE_LCBR, SE_LPRN, SE_LABK,         SE_RABK, SE_RPRN, SE_RCBR, SE_RBRC, SE_TILD,
-    SE_MINS, SE_ASTR, SE_UNDS, SE_EQL,  SE_AT,           SE_HASH, OS_CTRL, OS_SHFT, OS_ALT,  OS_GUI,
-    SE_PLUS, SE_COLN, SE_SCLN, SE_SLSH, SE_PERC,         SE_DLR,  SE_BSLS, SE_AMPR, SE_PIPE, SE_GRV,
-                               _______, _______,         KC_SPC,  _______,
+    AS(PLUS), AS(LBRC), AS(LCBR), AS(LPRN), AS(LABK),       AS(RABK), AS(RPRN), AS(RCBR), AS(RBRC), UD(TILD),
+    AS(MINS), AS(ASTR), AS(UNDS), AS(EQL),  AS(AT),         AS(HASH), OS_CTRL,  OS_SHFT,  OS_ALT,   OS_GUI,
+    UD(CIRC), AS(COLN), AS(SCLN), AS(SLSH), AS(PERC),       AS(DLR),  AS(BSLS), AS(AMPR), AS(PIPE), UD(GRV),
+                                          __, KC_ENT,       KC_SPC,  __,
 
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+                                  XX, XX, XX, XX, XX,       XX, XX, XX, XX, XX
   ),
 
   [NUM] = LAYOUT_ferris_hlc(
-    XXXXXXX, SE_EQL,  SE_SLSH, SE_ASTR, XXXXXXX,         XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX,
-    OS_GUI,  OS_ALT,  OS_SHFT, OS_CTRL, OS_FN,           XXXXXXX, KC_4,    KC_5,    KC_6,    KC_0,
-    XXXXXXX, SE_DOT,  SE_MINS, SE_PLUS, XXXXXXX,         XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,
-                                _______, _______,        KC_SPC,  _______,
+    XX,      AS(EQL),   AS(SLSH), AS(ASTR), XX,             XX,       AS(7),    AS(8),    AS(9),    XX,
+    OS_GUI,  OS_ALT,    OS_SHFT,  OS_CTRL,  OS_FN,          AS(DOT),  AS(4),    AS(5),    AS(6),    AS(0),
+    XX,      AS(UNDS),  AS(MINS), AS(PLUS), XX,             XX,       AS(1),    AS(2),    AS(3),    XX,
+                                             __,  __,       __,  __,
 
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+                                  XX, XX, XX, XX, XX,       XX, XX, XX, XX, XX
   ),
 };
 
@@ -72,9 +71,9 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
 
   case LA_NAV:
   case LA_SYM:
-      return true;
+    return true;
   default:
-      return false;
+    return false;
   }
 }
 
@@ -124,19 +123,32 @@ bool os_fn_pending = false;
 
 uint16_t oneshot_fn_press_user(uint16_t keycode) {
   switch (keycode) {
-    case KC_1:    return KC_F1;
-    case KC_2:    return KC_F2;
-    case KC_3:    return KC_F3;
-    case KC_4:    return KC_F4;
-    case KC_5:    return KC_F5;
-    case KC_6:    return KC_F6;
-    case KC_7:    return KC_F7;
-    case KC_8:    return KC_F8;
-    case KC_9:    return KC_F9;
-    case SE_EQL:  return KC_F10;
-    case SE_SLSH: return KC_F11;
-    case SE_ASTR: return KC_F12;
-    default:      return KC_NO;
+    case AS(1):    return KC_F1;
+    case AS(2):    return KC_F2;
+    case AS(3):    return KC_F3;
+    case AS(4):    return KC_F4;
+    case AS(5):    return KC_F5;
+    case AS(6):    return KC_F6;
+    case AS(7):    return KC_F7;
+    case AS(8):    return KC_F8;
+    case AS(9):    return KC_F9;
+    case AS(EQL):  return KC_F10;
+    case AS(SLSH): return KC_F11;
+    case AS(ASTR): return KC_F12;
+    default:       return KC_NO;
+  }
+}
+
+#define UD_TAP(kc) tap_code16(AS(kc)); tap_code(KC_SPC)
+
+bool process_undead_keys(uint16_t keycode, keyrecord_t *record) {
+  if (record->event.pressed) return true;
+  
+  switch (keycode) {
+    case UD(TILD): UD_TAP(TILD); return false;
+    case UD(GRV):  UD_TAP(GRV);  return false;
+    case UD(CIRC): UD_TAP(CIRC); return false;
+    default: return true;
   }
 }
 
@@ -161,27 +173,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     keycode, record
   );
 
-  if (!update_oneshot_fn(&os_fn_pending, OS_FN, keycode, record)) {
-    return false;
-  }
+  if (!update_oneshot_fn(&os_fn_pending, OS_FN, keycode, record)) return false;
+  if (!process_undead_keys(keycode, record)) return false;
 
   update_tabber(
     &tabber, TB_NEXT,
     keycode, record
   );
 
-  process_macro_key(
-    KC_TABL, MC_TABL,
+  process_shortcut_key(
+    KC_TABL, SC_TABL,
     keycode, record
   );
 
-  process_macro_key(
-    KC_TABR, MC_TABR,
+  process_shortcut_key(
+    KC_TABR, SC_TABR,
     keycode, record
   );
 
-  process_macro_key(
-    KC_TABN, MC_TABN,
+  process_shortcut_key(
+    KC_TABN, SC_TABN,
     keycode, record
   );
 
@@ -199,24 +210,24 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool caps_word_press_user(uint16_t keycode) {
   switch (keycode) {
-    case SE_MINS:
+    case AS(MINS):
 
-    case KC_A ... KC_Z:
-    case SE_ADIA:
-    case SE_ARNG:
-    case SE_ODIA:
+    case AS(A) ... AS(Z):
+    case AS(ADIA):
+    case AS(ARNG):
+    case AS(ODIA):
       add_weak_mods(MOD_BIT(KC_LSFT));
       return true;
 
-    case KC_1 ... KC_0:
+    case AS(1) ... AS(0):
 
     case KC_BSPC:
     case KC_DEL:
 
-    case SE_UNDS:
-        return true;
+    case AS(UNDS):
+      return true;
 
     default:
-        return false;
+      return false;
   }
 }

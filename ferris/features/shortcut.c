@@ -1,6 +1,6 @@
-#include "macro.h"
+#include "shortcut.h"
 
-void process_macro_key(
+void process_shortcut_key(
     uint16_t trigger,
     uint16_t action,
 

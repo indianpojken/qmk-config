@@ -14,4 +14,8 @@ enum keycodes {
   KC_TABL,
   KC_TABR,
   KC_TABN,
+
+  UD_TILD,
+  UD_GRV,
+  UD_CIRC,
 };
