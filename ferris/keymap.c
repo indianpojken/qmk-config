@@ -1,30 +1,21 @@
 #include QMK_KEYBOARD_H
 
-#include "layout.h"
+#include "locale.h"
+#include "layers.h"
 
 #include "keydefs/keycodes.h"
-#include "keydefs/shortcuts.h"
 #include "keydefs/overrides.h"
+#include "keydefs/shortcuts.h"
 
 #include "g/keymap_combo.h"
 
-#include "features/oneshot.h"
-#include "features/tabber.h"
-#include "features/shortcut.h"
 #include "features/magic_caps.h"
+#include "features/oneshot.h"
 #include "features/oneshot_fn.h"
+#include "features/shortcut.h"
+#include "features/tabber.h"
 
-enum layers {
-  DEF,
-  NAV,
-  SYM,
-  NUM,
-};
-
-#define LA_NAV MO(NAV)
-#define LA_SYM MO(SYM)
-#define LA_NUM MO(NUM)
-
+// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [DEF] = LAYOUT_ferris_hlc(
     AS(Q),    AS(W),    AS(E),    AS(R),    AS(T),          AS(Y),    AS(U),    AS(I),    AS(O),    AS(P),
@@ -62,6 +53,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   XX, XX, XX, XX, XX,       XX, XX, XX, XX, XX
   ),
 };
+// clang-format on
+
+static const shortcut_t shortcuts[] = {
+    {KC_TABL, SC_TABL},
+    {KC_TABR, SC_TABR},
+    {KC_TABN, SC_TABN},
+};
+
+static oneshot_t oneshots[] = {
+    {OS_GUI, KC_LGUI, os_up_unqueued},
+    {OS_ALT, KC_LALT, os_up_unqueued},
+    {OS_SHFT, KC_LSFT, os_up_unqueued},
+    {OS_CTRL, KC_LCTL, os_up_unqueued},
+};
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
   switch (keycode) {
@@ -95,11 +100,6 @@ bool is_oneshot_ignored_key(uint16_t keycode) {
   }
 }
 
-oneshot_state os_gui_state = os_up_unqueued;
-oneshot_state os_alt_state = os_up_unqueued;
-oneshot_state os_shft_state = os_up_unqueued;
-oneshot_state os_ctrl_state = os_up_unqueued;
-
 bool is_tabber_ignored_key(uint16_t keycode) {
   switch (keycode) {
   case KC_UP:
@@ -113,88 +113,81 @@ bool is_tabber_ignored_key(uint16_t keycode) {
 }
 
 tabber_t tabber = {
-  .enabled = false,
+    .enabled = false,
 
-  .modifier = KC_LALT,
-  .key = KC_TAB,
+    .modifier = KC_LALT,
+    .key = KC_TAB,
 };
 
 bool os_fn_pending = false;
 
 uint16_t oneshot_fn_press_user(uint16_t keycode) {
   switch (keycode) {
-    case AS(1):    return KC_F1;
-    case AS(2):    return KC_F2;
-    case AS(3):    return KC_F3;
-    case AS(4):    return KC_F4;
-    case AS(5):    return KC_F5;
-    case AS(6):    return KC_F6;
-    case AS(7):    return KC_F7;
-    case AS(8):    return KC_F8;
-    case AS(9):    return KC_F9;
-    case AS(EQL):  return KC_F10;
-    case AS(SLSH): return KC_F11;
-    case AS(ASTR): return KC_F12;
-    default:       return KC_NO;
+  case AS(1):
+    return KC_F1;
+  case AS(2):
+    return KC_F2;
+  case AS(3):
+    return KC_F3;
+  case AS(4):
+    return KC_F4;
+  case AS(5):
+    return KC_F5;
+  case AS(6):
+    return KC_F6;
+  case AS(7):
+    return KC_F7;
+  case AS(8):
+    return KC_F8;
+  case AS(9):
+    return KC_F9;
+  case AS(EQL):
+    return KC_F10;
+  case AS(SLSH):
+    return KC_F11;
+  case AS(ASTR):
+    return KC_F12;
+  default:
+    return KC_NO;
   }
 }
 
-#define UD_TAP(kc) tap_code16(AS(kc)); tap_code(KC_SPC)
+#define UD_TAP(kc)                                                             \
+  tap_code16(AS(kc));                                                          \
+  tap_code(KC_SPC)
 
 bool process_undead_keys(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) return true;
-  
+  if (record->event.pressed)
+    return true;
+
   switch (keycode) {
-    case UD(TILD): UD_TAP(TILD); return false;
-    case UD(GRV):  UD_TAP(GRV);  return false;
-    case UD(CIRC): UD_TAP(CIRC); return false;
-    default: return true;
+  case UD(TILD):
+    UD_TAP(TILD);
+    return false;
+  case UD(GRV):
+    UD_TAP(GRV);
+    return false;
+  case UD(CIRC):
+    UD_TAP(CIRC);
+    return false;
+  default:
+    return true;
   }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  update_oneshot(
-    &os_gui_state, KC_LGUI, OS_GUI,
-    keycode, record
-  );
+  process_oneshots(oneshots, ARRAY_SIZE(oneshots), keycode, record);
 
-  update_oneshot(
-    &os_shft_state, KC_LSFT, OS_SHFT,
-    keycode, record
-  );
+  if (!update_oneshot_fn(&os_fn_pending, OS_FN, keycode, record)) {
+    return false;
+  }
 
-  update_oneshot(
-    &os_alt_state, KC_LALT, OS_ALT,
-    keycode, record
-  );
+  if (!process_undead_keys(keycode, record)) {
+    return false;
+  }
 
-  update_oneshot(
-    &os_ctrl_state, KC_LCTL, OS_CTRL,
-    keycode, record
-  );
-
-  if (!update_oneshot_fn(&os_fn_pending, OS_FN, keycode, record)) return false;
-  if (!process_undead_keys(keycode, record)) return false;
-
-  update_tabber(
-    &tabber, TB_NEXT,
-    keycode, record
-  );
-
-  process_shortcut_key(
-    KC_TABL, SC_TABL,
-    keycode, record
-  );
-
-  process_shortcut_key(
-    KC_TABR, SC_TABR,
-    keycode, record
-  );
-
-  process_shortcut_key(
-    KC_TABN, SC_TABN,
-    keycode, record
-  );
+  update_tabber(&tabber, TB_NEXT, keycode, record);
+  process_shortcuts(shortcuts, ARRAY_SIZE(shortcuts), keycode, record);
 
   if (!process_magic_caps(keycode, record)) {
     return false;
@@ -210,24 +203,24 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool caps_word_press_user(uint16_t keycode) {
   switch (keycode) {
-    case AS(MINS):
+  case AS(MINS):
 
-    case AS(A) ... AS(Z):
-    case AS(ADIA):
-    case AS(ARNG):
-    case AS(ODIA):
-      add_weak_mods(MOD_BIT(KC_LSFT));
-      return true;
+  case AS(A)... AS(Z):
+  case AS(ADIA):
+  case AS(ARNG):
+  case AS(ODIA):
+    add_weak_mods(MOD_BIT(KC_LSFT));
+    return true;
 
-    case AS(1) ... AS(0):
+  case AS(1)... AS(0):
 
-    case KC_BSPC:
-    case KC_DEL:
+  case KC_BSPC:
+  case KC_DEL:
 
-    case AS(UNDS):
-      return true;
+  case AS(UNDS):
+    return true;
 
-    default:
-      return false;
+  default:
+    return false;
   }
 }

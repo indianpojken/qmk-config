@@ -1,6 +1,6 @@
 #pragma once
 
-#include "layout.h"
+#include "locale.h"
 
 #define SC_UNDO  C(KC_Z)
 #define SC_CUT   C(KC_X)
@@ -20,8 +20,6 @@
 
 #define SC_BWRD C(KC_BSPC)
 #define SC_DWRD C(KC_DEL)
-
-#define SC_QUIT G(KC_Q)
 
 #define SC_TABL C(S(KC_TAB))
 #define SC_TABR C(KC_TAB)

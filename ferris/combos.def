@@ -1,12 +1,14 @@
+#include "locale.h"
+
 #include "keydefs/keycodes.h"
 #include "keydefs/shortcuts.h"
 
 // DEF
 COMB(enter_combo,KC_ENT,  KC_Q, KC_W)
 
-COMB(arng_combo, SE_ARNG, KC_U, KC_I) // Å
-COMB(adia_combo, SE_ADIA, KC_J, KC_K) // Ä
-COMB(odia_combo, SE_ODIA, KC_M, SE_COMM) // Ö
+COMB(arng_combo, AS(ARNG), KC_U, KC_I) // Å
+COMB(adia_combo, AS(ADIA), KC_J, KC_K) // Ä
+COMB(odia_combo, AS(ODIA), KC_M, AS(COMM)) // Ö
 
 // NAV
 COMB(zdec_combo, SC_ZDEC, KC_TABL, TB_NEXT)
@@ -18,8 +20,8 @@ COMB(tabu_combo, SC_TABU, KC_TABR, KC_TABN)
 COMB(wini_combo, SC_WINI, KC_PGUP,  KC_BSPC)
 COMB(wind_combo, SC_WIND, KC_PGDN,  KC_LEFT)
 
-COMB(dwrd_combo, SC_BWRD, KC_BSPC, KC_UP)
-COMB(bwrd_combo, SC_DWRD, KC_UP,   KC_DEL)
+COMB(bwrd_combo, SC_BWRD, KC_BSPC, KC_UP)
+COMB(dwrd_combo, SC_DWRD, KC_UP,   KC_DEL)
 
 COMB(home_combo, KC_HOME, KC_LEFT, KC_DOWN)
 COMB(end_combo,  KC_END,  KC_DOWN, KC_RIGHT)
@@ -29,11 +31,11 @@ COMB(volm_combo, KC_MUTE, KC_MPRV, KC_MPLY, KC_MNXT)
 COMB(volu_combo, KC_VOLU, KC_MPLY, KC_MNXT)
 
 // SYM
-COMB(grv_combo,   SE_GRV,  SE_LPRN, SE_LABK)  // `
-COMB(acut_combo,  SE_ACUT, SE_RABK, SE_RPRN)  // ´
+COMB(grv_combo,   AS(GRV),  AS(LPRN), AS(LABK))  // `
+COMB(acut_combo,  AS(ACUT), AS(RABK), AS(RPRN))  // ´
 
-SUBS(nteq_combo,  "!=", SE_LBRC, SE_LCBR)
-SUBS(lteq_combo,  "<=", SE_LCBR, SE_LPRN)
-SUBS(arrow_combo, "=>", SE_ASTR, SE_UNDS)
-SUBS(struct_combo,".{", SE_UNDS, SE_EQL)
-SUBS(gteq_combo,  ">=", SE_RPRN, SE_RCBR)
+SUBS(nteq_combo,  "!=", AS(LBRC), AS(LCBR))
+SUBS(lteq_combo,  "<=", AS(LCBR), AS(LPRN))
+SUBS(arrow_combo, "=>", AS(ASTR), AS(UNDS))
+SUBS(struct_combo,".{", AS(UNDS), AS(EQL))
+SUBS(gteq_combo,  ">=", AS(RPRN), AS(RCBR))

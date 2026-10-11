@@ -21,3 +21,23 @@ void process_shortcut_key(
         set_mods(mods);
     }
 }
+
+void process_shortcuts(
+    const shortcut_t *shortcuts,
+    uint8_t count,
+
+    uint16_t keycode,
+    keyrecord_t *record
+) {
+    for (uint8_t i = 0; i < count; i++) {
+        if (shortcuts[i].trigger == keycode) {
+            process_shortcut_key(
+                shortcuts[i].trigger,
+                shortcuts[i].action,
+                keycode,
+                record
+            );
+            return;
+        }
+    }
+}
