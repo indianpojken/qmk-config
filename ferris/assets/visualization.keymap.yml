@@ -3,7 +3,8 @@ draw_config:
     footer_text: ""
     svg_extra_style: |
         rect.key, rect.combo { fill: #313244; stroke: none; }
-        rect.combo { fill: #1e1e2e; }
+        rect.combo { fill: #1e1e2e;}
+        .icon-tabler {color: #89b4fa; }
         path.combo { stroke: #585b70; }
         svg.keymap { background-color: #1e1e2e; }
         .layer-DEF text, .layer-DEF use, .layer-DEF rect.held { fill: #cfbd99; }
@@ -19,9 +20,7 @@ draw_config:
         rect:has(~ a[href="#EXT"]) { stroke: #dd7878; stroke-dasharray: 20 30; stroke-dashoffset: 65; }
         a { visibility: hidden; }
 combos:
-    - { p: [0, 1], k: $$mdi:keyboard-esc$$, l: [DEF] }
-    - { p: [20, 21], k: $$mdi:keyboard-return$$, l: [DEF] }
-    - { p: [12, 13], k: $$mdi:console$$, l: [DEF] }
+    - { p: [0, 1], k: $$mdi:keyboard-return$$, l: [DEF] }
     
     - { p: [6, 7], k: Å, l: [DEF] }
     - { p: [16, 17], k: Ä, l: [DEF] }
@@ -40,14 +39,17 @@ combos:
     - { p: [26, 27], k: $$mdi:volume-minus$$, l: [NAV] }
     - { p: [26, 27, 28], k: $$mdi:volume-off$$, l: [NAV], o: 0.1, a: "bottom" }
     - { p: [27, 28], k: $$mdi:volume-plus$$, l: [NAV] }
+    - { p: [5, 6], k: $$tabler:arrow-autofit-right$$, l: [NAV] }
     - { p: [6, 7], k: $$mdi:backspace$$, l: [NAV] }
     - { p: [7, 8], k: $$mdi:backspace-reverse$$, l: [NAV] }
+    - { p: [15, 16], k: $$tabler:arrow-autofit-left$$, l: [NAV] }
     - { p: [16, 17], k: $$mdi:arrow-collapse-left$$, l: [NAV] }
     - { p: [17, 18], k: $$mdi:arrow-collapse-right$$, l: [NAV] }
 
     - { p: [1, 2], k: "!=", l: [SYM] }
     - { p: [2, 3], k: "<=", l: [SYM] }
-    - { p: [5, 6], k: ´, l: [SYM] }
+    - { p: [3, 4], k: '`', l: [SYM] }
+    - { p: [5, 6], k: '´', l: [SYM] }
     - { p: [11, 12], k: "=>", l: [SYM] }
     - { p: [12, 13], k: ".{", l: [SYM] }
     - { p: [6, 7], k: ">=", l: [SYM] }
@@ -90,7 +92,7 @@ layers:
             SYM,
         ]
     NAV:
-        - $$mdi:printer-outline$$
+        - $$mdi:keyboard-esc$$
         - $$mdi:table-arrow-left$$
         - $$mdi:table$$
         - $$mdi:table-arrow-right$$
@@ -108,20 +110,20 @@ layers:
         - { t: $$mdi:apple-keyboard-shift$$, type: mod }
         - { t: $$mdi:apple-keyboard-control$$, type: mod }
         - $$mdi:card-search$$
-        - $$mdi:keyboard-tab$$
+        - {
+              t: $$mdi:arrow-collapse-down$$,
+              s: $$material:keyboard_double_arrow_down$$,
+          }
         - $$mdi:arrow-left$$
         - $$mdi:arrow-down$$
         - $$mdi:arrow-right$$
-        - { t: $$mdi:keyboard-esc$$, s: $$mdi:close$$ }
+        - $$mdi:keyboard-tab$$
         - $$mdi:undo-variant$$
         - $$mdi:content-cut$$
         - $$mdi:content-copy$$
         - $$mdi:content-paste$$
         - $$mdi:redo-variant$$
-        - {
-              t: $$mdi:arrow-collapse-down$$,
-              s: $$material:keyboard_double_arrow_down$$,
-          }
+        - $$mdi:printer-outline$$
         - $$mdi:skip-backward$$
         - $$mdi:play-pause$$
         - $$mdi:skip-forward$$
@@ -131,7 +133,7 @@ layers:
         - $$mdi:keyboard-return$$
         - SYM
     SYM:
-        - "^"
+        - "+"
         - "["
         - "{"
         - "("
@@ -151,7 +153,7 @@ layers:
         - { t: $$mdi:apple-keyboard-shift$$, type: mod }
         - { t: $$mdi:apple-keyboard-option$$, type: mod }
         - { t: $$mdi:apple-keyboard-command$$, type: mod }
-        - "+"
+        - "^"
         - ":"
         - ";"
         - "/"
@@ -162,8 +164,8 @@ layers:
         - "|"
         - "`"
         - NAV
-        - { t: ▽, type: trans }
-        - { t: ▽, type: trans }
+        - $$mdi:keyboard-return$$
+        - $$mdi:keyboard-space$$
         - { t: "", type: held }
     NUM:
         - ""
@@ -181,7 +183,7 @@ layers:
         - { t: $$mdi:apple-keyboard-shift$$, type: mod }
         - { t: $$mdi:apple-keyboard-control$$, type: mod }
         - { t: "FN", type: mod }
-        - ""
+        - "."
         - { t: "4", s: $$mdi:keyboard-f4$$ }
         - { t: "5", s: $$mdi:keyboard-f5$$ }
         - { t: "6", s: $$mdi:keyboard-f6$$ }
